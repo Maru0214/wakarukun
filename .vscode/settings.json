@@ -1,0 +1,5 @@
+{
+  "cSpell.words": ["iconsets", "nuxt", "vuetify"],
+  "vue3snippets.enable-compile-vue-file-on-did-save-code": true,
+  "nuxt.isNuxtApp": false
+}

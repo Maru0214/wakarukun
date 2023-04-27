@@ -1,0 +1,11 @@
+@use "vuetify/styles";
+
+.wide-title {
+  padding: 30px;
+  text-align: center;
+  font-weight: 800;
+  font-size: 40px;
+  line-height: 1.5em;
+  color: rgb(var(--v-theme-on-primary-container));
+  background-color: rgb(var(--v-theme-inverse-primary));
+}
