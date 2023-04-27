@@ -16,13 +16,13 @@ const getCoffees = async () => {
   coffees.value = response.data;
 };
 
-getCoffees();
+await getCoffees();
 </script>
 
 <template>
   <body>
     <div class="card-container">
-      <div v-for="coffee in coffees">
+      <div v-for="coffee in coffees" :key="coffee.id">
         <v-card height="100%">
           <v-img :src="coffee.image" height="200px" cover></v-img>
           <v-card-title> {{ coffee.title }} </v-card-title>

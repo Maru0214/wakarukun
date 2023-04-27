@@ -1,11 +1,39 @@
 @use "vuetify/styles";
 
 .wide-title {
-  padding: 30px;
+  padding: 40px;
   text-align: center;
   font-weight: 800;
   font-size: 40px;
   line-height: 1.5em;
   color: rgb(var(--v-theme-on-primary-container));
   background-color: rgb(var(--v-theme-inverse-primary));
+}
+
+@font-face {
+  font-family: "M PLUS 1p";
+  src: url("https://r2.wappon-28-assets.cf/common/fonts/mplus/mplus-1p-medium.ttf")
+    format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "M PLUS 1p";
+  src: url("https://r2.wappon-28-assets.cf/common/fonts/mplus/mplus-1p-bold.ttf")
+    format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "M PLUS 1p";
+  src: url("https://r2.wappon-28-assets.cf/common/fonts/mplus/mplus-1p-heavy.ttf")
+    format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+* {
+  font-family: "M PLUS 1p", sans-serif;
 }

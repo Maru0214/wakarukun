@@ -10,14 +10,17 @@
     "plugin:vue/vue3-recommended",
     "plugin:vue/essential",
     "@nuxtjs/eslint-config-typescript",
+    "plugin:import/recommended",
     "prettier"
   ],
   "parserOptions": {
     "ecmaVersion": "latest",
     "parser": "@typescript-eslint/parser",
-    "sourceType": "module"
+    "sourceType": "module",
+    "project": ["./tsconfig.json"],
+    "extraFileExtensions": [".vue"]
   },
-  "plugins": ["vue", "@typescript-eslint", "tailwindcss"],
+  "plugins": ["vue", "@typescript-eslint"],
   "rules": {
     "no-restricted-imports": [
       "error",
@@ -65,6 +68,7 @@
     "@typescript-eslint/consistent-type-imports": [
       "error",
       { "prefer": "type-imports" }
-    ]
+    ],
+    "@typescript-eslint/no-floating-promises": ["warn"]
   }
 }
