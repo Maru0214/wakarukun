@@ -1,12 +1,7 @@
 <script setup lang="ts">
 const isLoading = ref(true);
-const isEnabled = ref(false);
 
-onMounted(() => {
-  isLoading.value = false;
-});
-
-const toggle = () => (isEnabled.value = !isEnabled.value);
+onMounted(() => (isLoading.value = false));
 </script>
 
 <template>
@@ -16,17 +11,8 @@ const toggle = () => (isEnabled.value = !isEnabled.value);
       class="progress"
     ></VProgressLinear>
     <div class="wide-title">投票ページ</div>
-    <a href="/vote">vote に飛ぶよ</a><br />
-    <v-switch
-      v-model="isEnabled"
-      label="red"
-      color="red"
-      hide-details
-    ></v-switch>
-    <p>今の状態: {{ isEnabled }}</p>
-    <VBtn @click="toggle">かえる</VBtn>
     <main>
-      <CoffeeCards />
+      <img src="/assets/pic/wakatta.svg" alt="Example" />
     </main>
   </div>
 </template>
