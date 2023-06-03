@@ -12,7 +12,7 @@ onMounted(() => (isLoading.value = false));
     ></VProgressLinear>
     <div class="wide-title">投票ページ</div>
     <main>
-      <img src="/assets/pic/wakatta.svg" alt="Example" />
+      <vote-student />
     </main>
   </div>
 </template>

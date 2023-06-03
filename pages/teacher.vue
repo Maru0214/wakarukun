@@ -1,14 +1,20 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const isLoading = ref(true);
+
+onMounted(() => (isLoading.value = false));
+</script>
 
 <template>
-  <body>
-    <div class="wide-title">最初のページ</div>
-    <div>
-      <p>最初のページだよ</p>
-      <a href="main">投票画面移動するよ</a>
-      <a href="teacher">先生画面移動するよ</a>
-    </div>
-  </body>
+  <div class="background">
+    <VProgressLinear
+      :indeterminate="isLoading"
+      class="progress"
+    ></VProgressLinear>
+    <div class="wide-title">先生確認</div>
+    <main>
+      <check-teacher/>
+    </main>
+  </div>
 </template>
 
 <style scoped lang="scss">

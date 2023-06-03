@@ -20,11 +20,12 @@ await getCoffees();
 </script>
 
 <template>
-  <template>
+  <body>
     <div>
-      <img src="/assets/pic/wakatta.svg" alt="Example" />
+      <p>生徒用の投票ページだよ</p>
+      <a href="./">最初の画面に移動するよ</a>
     </div>
-  </template>
+  </body>
 </template>
 
 <style scoped lang="scss">
