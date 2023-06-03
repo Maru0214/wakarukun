@@ -22,6 +22,12 @@
   },
   "plugins": ["vue", "@typescript-eslint"],
   "rules": {
+    "import/no-unresolved": [
+      "error",
+      {
+        "ignore": ["^@/"] // Ignore Nuxt aliases
+      }
+    ],
     "no-restricted-imports": [
       "error",
       {

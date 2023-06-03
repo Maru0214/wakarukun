@@ -10,13 +10,23 @@ export default defineNuxtConfig({
       config.plugins?.push(vuetify());
     },
   },
-  vite: {
-    ssr: {
-      noExternal: ["vuetify"],
-    },
-    define: {
-      "process.env.DEBUG": false,
+  plugins: ["@/plugins/firebase.ts"],
+  css: ["@/assets/main.scss"],
+  runtimeConfig: {
+    public: {
+      apiKey: "",
+      authDomain: "",
+      projectId: "",
+      storageBucket: "",
+      messagingSenderId: "",
+      appId: "",
+      measurementId: "",
     },
   },
-  css: ["@/assets/main.scss"],
+  rootDir: "src/",
+  typescript: {
+    tsConfig: {
+      extends: "@tsconfig/strictest/tsconfig.json",
+    },
+  },
 });
