@@ -34,6 +34,16 @@
   font-style: normal;
 }
 
-* {
+html {
   font-family: "M PLUS 1p", sans-serif;
+}
+
+article {
+  padding: 0 100px;
+  max-width: 1600px;
+  margin: 0 auto;
+
+  @media screen and (max-width: 860px) {
+    padding: 0 20px;
+  }
 }

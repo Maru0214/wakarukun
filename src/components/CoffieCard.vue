@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import axios from "axios";
 
+// FIXME: この型定義はどこかに移動する
 type CoffeeType = {
   title: string;
   description: string;
@@ -16,14 +17,24 @@ const getCoffees = async () => {
   coffees.value = response.data;
 };
 
-await getCoffees();
+onMounted(() => getCoffees());
 </script>
 
 <template>
   <body>
-    <div>
-      <p>生徒用の投票ページだよ</p>
-      <a href="./">最初の画面に移動するよ</a>
+    <div class="card-container">
+      <div v-for="coffee in coffees" :key="coffee.id">
+        <v-card height="100%">
+          <v-img :src="coffee.image" height="200px" cover></v-img>
+          <v-card-title> {{ coffee.title }} </v-card-title>
+          <v-card-subtitle>
+            {{ coffee.ingredients.join(", ") }}
+          </v-card-subtitle>
+          <v-card-text>
+            {{ coffee.description }}
+          </v-card-text>
+        </v-card>
+      </div>
     </div>
   </body>
 </template>
@@ -39,6 +50,7 @@ body {
   gap: 20px;
 
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
   @media screen and (max-width: 400px) {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }

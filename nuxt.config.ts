@@ -1,6 +1,5 @@
 import { defineNuxtConfig } from "nuxt/config";
-import vuetify from "vite-plugin-vuetify";
-
+import vuetify from "vite-plugin-vuetify/dist";
 export default defineNuxtConfig({
   build: {
     transpile: ["vuetify"],
@@ -10,7 +9,14 @@ export default defineNuxtConfig({
       config.plugins?.push(vuetify());
     },
   },
-  plugins: ["@/plugins/firebase.ts"],
+  vite: {
+    ssr: {
+      noExternal: ["vuetify"],
+    },
+    define: {
+      "process.env.DEBUG": false,
+    },
+  },
   css: ["@/assets/main.scss"],
   runtimeConfig: {
     public: {
