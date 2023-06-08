@@ -2,7 +2,6 @@
 
 <template>
   <div>
-    <div class="wide-title">最初のページ</div>
     <article>
       <p>最初のページだよ</p>
 
@@ -21,4 +20,3 @@
 </template>
 
 <style scoped lang="scss"></style>
-
