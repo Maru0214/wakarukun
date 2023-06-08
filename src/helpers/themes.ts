@@ -20,7 +20,7 @@ export const mainTheme: ThemeDefinition = {
     "on-error": "#ffffff",
     "error-container": "#ffdad4",
     "on-error-container": "#410001",
-    background: "#ffdad4",
+    background: "#E9E0DB",
     "on-background": "#201a18",
     surface: "#fcfcfc",
     "on-surface": "#201a18",
