@@ -3,10 +3,10 @@
 <template>
   <div>
     <article>
-      <p>最初のページだよ</p>
+      <p>ああああ</p>
 
-      <VBtn @click="$router.push('/vote')"> 投票画面移動するよ </VBtn>
-      <VBtn @click="$router.push('/teacher')"> 先生画面移動するよ </VBtn>
+      <VBtn @click="$router.push('/vote')"> 生徒 </VBtn>
+      <VBtn @click="$router.push('/teacher')"> 先生 </VBtn>
 
       <!-- もしくは
 
