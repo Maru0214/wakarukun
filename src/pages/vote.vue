@@ -44,9 +44,14 @@ const handleClick = () => {
 
 .wakaranaibtn {
   /* わからないボタンのスタイル */
+  width: 70%;
+  margin : 0 auto;
 }
 
 .rikaibtn {
   /* 理解ボタンのスタイル */
-}
+  color: #5F5F5F;
+  text-align: center;
+  font-size: 20px;
+  }
 </style>
