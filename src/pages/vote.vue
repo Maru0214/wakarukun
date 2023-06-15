@@ -11,9 +11,9 @@ const handleClick = () => {
 
 <template>
   <div class="background">
-    <div class="wide-title">投票ページ</div>
+   
     <article>
-      <VoteStudent />
+      <VBtn @click="$router.push('/')"> HOME </VBtn>
     </article>
     <div class="wakaranaibtn" @click="handleClick">
       <img
@@ -40,6 +40,9 @@ const handleClick = () => {
 
 .wide-title {
   /* タイトルのスタイル */
+  background-color: #E9E0DB;
+  color: #5F5F5F;
+  height: 10px;
 }
 
 .wakaranaibtn {

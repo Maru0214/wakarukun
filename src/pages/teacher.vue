@@ -6,8 +6,8 @@ const isStudent = false; // いじってみよう
   <div class="background">
     <div>{{ isStudent ? "生徒" : "先生" }}</div>
     <article>
-      <VoteStudent v-if="isStudent" />
-      <VoteTeacher v-else />
+      <VBtn @click="$router.push('/')"> 最初の画面に移動するよ </VBtn>
+      
     </article>
   </div>
 </template>

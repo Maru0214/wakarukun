@@ -3,7 +3,7 @@
 <template>
   <div>
     <article>
-      <p>ああああ</p>
+      <p>ホーム画面</p>
 
       <VBtn @click="$router.push('/vote')"> 生徒 </VBtn>
       <VBtn @click="$router.push('/teacher')"> 先生 </VBtn>
