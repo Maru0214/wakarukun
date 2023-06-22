@@ -3,10 +3,16 @@
 <template>
   <div>
     <article>
-      <p>ホーム画面</p>
+      <div class="logo">
+      <img
+        src="../assets/img/logo.svg"
+      />
+    </div>
 
-      <VBtn @click="$router.push('/vote')"> 生徒 </VBtn>
-      <VBtn @click="$router.push('/teacher')"> 先生 </VBtn>
+      <div class="bota">
+      <VBtn class="vote"  height="80" width="160" @click="$router.push('/vote')"> 生徒 </VBtn>
+      <VBtn class="teacher" height="80" width="160" @click="$router.push('/teacher')"> 先生 </VBtn>
+    </div>
 
       <!-- もしくは
 
@@ -19,4 +25,31 @@
   </div>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.logo{
+  width: 80%;
+  margin : 0 auto;
+  margin-top: 10%;
+}
+
+.bota {
+  text-align: center;
+  margin-top: 10%;
+}
+
+.vote {
+  background-size: cover;
+  text-align: center;
+  font-size: 45px;
+  margin-right: 15px;
+}
+
+.teacher{
+  background-size: cover;
+  text-align: center;
+  font-size: 45px;
+  margin-left: 15px;
+  
+}
+
+</style>

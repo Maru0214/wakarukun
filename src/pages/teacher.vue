@@ -4,9 +4,9 @@ const isStudent = false; // いじってみよう
 
 <template>
   <div class="background">
-    <div>{{ isStudent ? "生徒" : "先生" }}</div>
+    <div>{{ isStudent ? "生徒" : "" }}</div>
     <article>
-      <VBtn @click="$router.push('/')"> 最初の画面に移動するよ </VBtn>
+      <VBtn @click="$router.push('/')"> HOME </VBtn>
       
     </article>
   </div>
