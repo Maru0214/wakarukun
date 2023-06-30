@@ -29,7 +29,7 @@
 .logo{
   width: 80%;
   margin : 0 auto;
-  margin-top: 10%;
+  margin-top: 25%;
 }
 
 .bota {
