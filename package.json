@@ -11,7 +11,7 @@
   "dependencies": {
     "@mdi/js": "^7.2.96",
     "axios": "^1.4.0",
-    "firebase": "^9.22.1",
+    "firebase": "^9.23.0",
     "sass": "^1.62.1",
     "vite-plugin-vuetify": "^1.0.2",
     "vue-axios": "^3.5.2",
