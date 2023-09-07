@@ -22,12 +22,12 @@ const handleClick = () => {
     <div class="wakaranaibtn" @click="handleClick">
       <img
         v-if="clicked"
-        src="../assets/img/wakaranaibtn.png"
+        src="../assets/img/ositaato.svg"
         style="display: block; margin: auto"
       />
       <img
         v-else
-        src="../assets/img/wakattabtn.png"
+        src="../assets/img/osumae.svg"
         style="display: block; margin: auto"
       />
     </div>
