@@ -12,9 +12,10 @@
 </template>
 
 <script setup lang="ts">
-import GoogleLogo from "@/assets/svg/icons/google-logo.svg";
-const googleSignUp = () => {
+import { useAuth } from "./useAuth";
+
+const googleSignUp = async () => {
   const { googleSignUp } = useAuth();
-  googleSignUp();
+  await googleSignUp();
 };
 </script>

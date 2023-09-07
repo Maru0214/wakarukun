@@ -4,15 +4,27 @@
   <div>
     <article>
       <div class="logo">
-      <img
-        src="../assets/img/logo.svg"
-      />
-    </div>
+        <img src="../assets/img/logo.svg" />
+      </div>
 
       <div class="bota">
-      <VBtn class="vote"  height="80" width="160" @click="$router.push('/vote')"> 生徒 </VBtn>
-      <VBtn class="teacher" height="80" width="160" @click="$router.push('/teacher')"> 先生 </VBtn>
-    </div>
+        <VBtn
+          class="vote"
+          height="80"
+          width="160"
+          @click="$router.push('/vote')"
+        >
+          生徒
+        </VBtn>
+        <VBtn
+          class="teacher"
+          height="80"
+          width="160"
+          @click="$router.push('/teacher')"
+        >
+          先生
+        </VBtn>
+      </div>
 
       <!-- もしくは
 
@@ -21,14 +33,17 @@
       </NuxtLink>
       
       -->
+     
+      <SignUpForm/>
+      
     </article>
   </div>
 </template>
 
 <style scoped lang="scss">
-.logo{
+.logo {
   width: 80%;
-  margin : 0 auto;
+  margin: 0 auto;
   margin-top: 25%;
 }
 
@@ -44,12 +59,10 @@
   margin-right: 15px;
 }
 
-.teacher{
+.teacher {
   background-size: cover;
   text-align: center;
   font-size: 45px;
   margin-left: 15px;
-  
 }
-
 </style>
