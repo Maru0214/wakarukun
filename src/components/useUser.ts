@@ -1,7 +1,6 @@
 import type { Ref } from "vue";
 
 import type { User } from "firebase/auth";
-
 export const useUser = () => {
   const user: Ref<User | null> = useState<User | null>("user");
 

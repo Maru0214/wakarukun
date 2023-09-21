@@ -1,6 +1,6 @@
 export default defineNuxtRouteMiddleware(async () => {
   if (!process.server) {
-    const { checkAuthState } = useAuth();
+    const { checkAuthState } = getAuth();
     await checkAuthState();
   }
 });

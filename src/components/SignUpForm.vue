@@ -13,6 +13,7 @@
 </template>
 
 <script setup lang="ts">
+import {}
 import GoogleLogo from "@/assets/img/google-logo.svg";
 const googleSignUp = () => {
   const { googleSignUp } = useAuth();
