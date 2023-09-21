@@ -32,6 +32,7 @@
         <VBtn> 投票画面移動するよ </VBtn>
       </NuxtLink>
       
+
       -->
      
       <SignUpForm/>

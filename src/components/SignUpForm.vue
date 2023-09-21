@@ -4,7 +4,8 @@
     <ul class="signup-buttons">
       <li>
         <button class="google-button" @click="googleSignUp">
-          <i><GoogleLogo></GoogleLogo></i><span>Googleで登録</span>
+          <i><GoogleLogo></GoogleLogo></i>
+          <span>Googleで登録</span>
         </button>
       </li>
     </ul>
@@ -12,10 +13,9 @@
 </template>
 
 <script setup lang="ts">
-import { useAuth } from "./useAuth";
-
-const googleSignUp = async () => {
+import GoogleLogo from "@/assets/img/google-logo.svg";
+const googleSignUp = () => {
   const { googleSignUp } = useAuth();
-  await googleSignUp();
+  googleSignUp();
 };
 </script>
