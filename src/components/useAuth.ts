@@ -7,7 +7,7 @@ import type { User, UserCredential } from "firebase/auth";
 
 export function useAuth() {
   const { $auth, $firestore } = useNuxtApp();
-  const user = ref<User | null>($auth.currentUser);
+  const user = ref<User | null>($auth.currentUser as User); // 型アサーションを使用して型を指定
   const isAuthed = computed(() => !!user.value);
   const db = $firestore;
 
@@ -34,9 +34,11 @@ export function useAuth() {
   // Google新規登録
   async function googleSignUp() {
     const provider = new GoogleAuthProvider();
-    const googleUser = await signInWithPopup($auth, provider);
+    const googleUser = await signInWithPopup($auth as Auth, provider); // 型アサーションを使用して型を指定
     const user = await getUser(googleUser.user.uid);
+
     const { updateUser } = await useUser();
+
     if (user) {
       alert("既にユーザー登録されています。");
       updateUser(user.data());
