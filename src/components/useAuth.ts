@@ -1,3 +1,5 @@
+// 必要なものを入れる
+
 import {
   addDoc,
   collection,
