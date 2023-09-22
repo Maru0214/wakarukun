@@ -1,80 +1,41 @@
 {
+  "root": true,
   "env": {
     "browser": true,
     "es2021": true,
     "node": true
   },
   "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
+    "airbnb-base",
+    "airbnb-typescript/base",
+    "standard-with-typescript",
     "plugin:vue/vue3-recommended",
-    "plugin:vue/essential",
-    "@nuxtjs/eslint-config-typescript",
-    "plugin:import/recommended",
+    "@vue/typescript/recommended",
     "prettier"
   ],
   "parserOptions": {
-    "ecmaVersion": "latest",
-    "parser": "@typescript-eslint/parser",
+    "ecmaVersion": 13,
     "sourceType": "module",
-    "project": "./tsconfig.json",
-    "extraFileExtensions": [".vue"]
+    "project": "./tsconfig.json"
   },
-  "plugins": ["vue", "@typescript-eslint"],
+  "globals": {
+    "defineNuxtPlugin": false,
+    "defineNuxtConfig": false,
+    "useNuxtApp": false,
+    "computed": false,
+    "toRefs": false,
+    "onMounted": false
+  },
+  "plugins": [],
   "rules": {
-    "import/no-unresolved": [
-      "error",
-      {
-        "ignore": ["^@/"] // Ignore Nuxt aliases
-      }
-    ],
-    "no-restricted-imports": [
-      "error",
-      {
-        "patterns": [
-          "../*",
-          "./assets/*",
-          "./components/*",
-          "./pages/*",
-          "./*.vue"
-        ]
-      }
-    ],
-    "import/order": [
-      "error",
-      {
-        "groups": [
-          "builtin",
-          "external",
-          "parent",
-          "sibling",
-          "index",
-          "object",
-          "type"
-        ],
-        "pathGroups": [
-          {
-            "pattern": "{vue,vue-router,vite,@vitejs/plugin-vue}",
-            "group": "builtin",
-            "position": "before"
-          },
-          {
-            "pattern": "@src/**",
-            "group": "parent",
-            "position": "before"
-          }
-        ],
-        "pathGroupsExcludedImportTypes": ["builtin"],
-        "alphabetize": {
-          "order": "asc"
-        },
-        "newlines-between": "always"
-      }
-    ],
-    "@typescript-eslint/consistent-type-imports": [
-      "error",
-      { "prefer": "type-imports" }
-    ],
-    "@typescript-eslint/no-floating-promises": ["warn"]
+    "import/no-extraneous-dependencies": "off",
+    "import/prefer-default-export": "off",
+    "@typescript-eslint/consistent-type-definitions": ["error", "type"],
+    "no-underscore-dangle": "off",
+    "@typescript-eslint/prefer-nullish-coalescing": "off",
+    "@typescript-eslint/strict-boolean-expressions": "off",
+    "import/extensions": "off",
+    "import/no-unresolved": "off",
+    "import/no-mutable-exports": "off"
   }
 }

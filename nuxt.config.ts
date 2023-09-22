@@ -1,6 +1,7 @@
 import { defineNuxtConfig } from "nuxt/config";
-import vuetify from "vite-plugin-vuetify/dist";
+import vuetify from "vite-plugin-vuetify";
 export default defineNuxtConfig({
+  devtools: { enabled: true },
   build: {
     transpile: ["vuetify"],
   },
@@ -29,10 +30,6 @@ export default defineNuxtConfig({
       measurementId: "",
     },
   },
-  rootDir: "src/",
-  typescript: {
-    tsConfig: {
-      extends: "@tsconfig/strictest/tsconfig.json",
-    },
-  },
+
+  rootDir: "./src",
 });
