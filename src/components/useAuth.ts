@@ -41,13 +41,13 @@ export function useAuth() {
     if (user) {
       alert("既にユーザー登録されています。");
       updateUser(user.data());
-      await navigateTo("/login", { replace: true });
+      await navigateTo("../pages/index", { replace: true });
     } else {
       alert("新規登録完了しました");
       await createUser(googleUser);
       const newUser = await getUser(googleUser.user.uid);
       updateUser(newUser.data());
-      await navigateTo("/mypage", { replace: true });
+      await navigateTo("../pages/index", { replace: true });
     }
   }
 
