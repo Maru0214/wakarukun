@@ -1,59 +1,88 @@
+/* eslint-disable no-console */
+
 import { addDoc, collection, getDocs, query, where } from "@firebase/firestore";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { computed, ref } from "vue";
+import {
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  signInWithPopup,
+} from "firebase/auth";
+import { ref } from "vue";
 
 import type { User, UserCredential } from "firebase/auth";
-import { useUser } from "./useUser";
 
 export function useAuth() {
   const { $auth, $db } = useNuxtApp();
-  const user = ref<User | null>($auth.currentUser);
-  const isAuthed = computed(() => !!user.value);
 
-  $auth.onIdTokenChanged((authUser) => (user.value = authUser));
+  // 現在のユーザー
+  const currentUser = ref<User | null>($auth.currentUser);
 
-  // ユーザー情報取得
-  const getUser = async (uid: string): Promise<any> => {
-    const q = query(collection($db, "users"), where("uid", "==", uid));
-    const querySnapshot = await getDocs(q);
+  // 認証済みかどうか
+  const hasAuthorized = computed(() => currentUser.value != null);
 
-    return querySnapshot.docs[0];
-  };
+  // ユーザーの変更を監視
+  onAuthStateChanged($auth, (newUser) => {
+    currentUser.value = newUser;
+  });
 
-  // ユーザー作成
-  const createUser = async (_user: UserCredential) => {
+  /**
+   * UUID からユーザーを取得
+   * @param uuid UUID
+   * @returns User | null
+   */
+  async function getUserFromUuid(uuid: string): Promise<User | null> {
+    const users = await getDocs(
+      query(collection($db, "users"), where("uid", "==", uuid))
+    );
+
+    return users.empty ? null : (users.docs[0].data() as User);
+  }
+
+  /**
+   * 新しくユーザーを作成
+   *
+   * @param userCredential ユーザー情報
+   */
+  async function createUser(userCredential: UserCredential) {
+    const { uid, displayName, photoURL, email } = userCredential.user;
     await addDoc(collection($db, "users"), {
-      uid: _user.user.uid,
-      name: _user.user.displayName,
-      email: _user.user.email,
-      photo: _user.user.photoURL,
+      uid,
+      displayName,
+      photoURL,
+      email,
     });
-  };
+  }
 
-  // Google新規登録
-  async function googleSignUp() {
+  /**
+   * Google アカウントでログイン
+   */
+  async function googleSignUp(): Promise<void> {
     const provider = new GoogleAuthProvider();
-    const googleUser = await signInWithPopup($auth, provider); // 型アサーションを使用して型を指定
-    const user = await getUser(googleUser.user.uid);
+    let userCredential: UserCredential;
 
-    const { updateUser } = useUser();
-
-    if (user) {
-      alert("既にユーザー登録されています。");
-      updateUser(user.data());
-      await navigateTo("../pages/index", { replace: true });
-    } else {
-      alert("新規登録完了しました");
-      await createUser(googleUser);
-      const newUser = await getUser(googleUser.user.uid);
-      updateUser(newUser.data());
-      await navigateTo("../pages/index", { replace: true });
+    try {
+      userCredential = await signInWithPopup($auth, provider);
+    } catch (error) {
+      console.error(error);
+      throw new Error("Google アカウントでのログインに失敗しました");
     }
+
+    const user = await getUserFromUuid(userCredential.user.uid);
+
+    if (user != null) {
+      console.log("新規ユーザーを作成");
+      await createUser(userCredential);
+    } else {
+      console.log("既存ユーザー");
+    }
+
+    currentUser.value = userCredential.user;
   }
 
-  async function currentUser() {
-    return $auth.currentUser;
-  }
-
-  return { isAuthed, user, googleSignUp, currentUser };
+  return {
+    currentUser,
+    hasAuthorized,
+    getUserFromUuid,
+    createUser,
+    googleSignUp,
+  };
 }
