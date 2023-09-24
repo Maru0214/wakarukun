@@ -1,7 +1,12 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useAuth } from "@/components/useAuth";
+import Logoutform from "~/components/logoutform.vue";
+
+const { hasAuthorized } = useAuth();
+</script>
 
 <template>
-  <div>
+  <div v-if="hasAuthorized">
     <article>
       <div class="logo">
         <img src="../assets/img/logo.svg" />
@@ -34,10 +39,14 @@
       
 
       -->
-     
-      <SignUpForm/>
-      
+
+      <Logoutform />
     </article>
+  </div>
+
+  <div v-else>
+    <P>ろぐいんしろ</P>
+    <SignUpForm />
   </div>
 </template>
 

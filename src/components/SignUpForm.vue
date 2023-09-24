@@ -1,10 +1,7 @@
 <script setup lang="ts">
 import { useAuth } from "./useAuth";
 
-const { googleSignUp, currentUser, hasAuthorized } = useAuth();
-const handleClick = async () => {
-  await googleSignUp();
-};
+const { googleSignUp, currentUser, hasAuthorized, userSignOut } = useAuth();
 </script>
 
 <template>
@@ -12,9 +9,10 @@ const handleClick = async () => {
     <p class="title">SNSアカウントで登録</p>
     <ul class="signup-buttons">
       <li>
-        <button @click="handleClick">
+        <button @click="googleSignUp">
           <img src="@/assets/img/google-logo.svg" />
           <span>Googleで登録</span>
+          <p @click="userSignOut">これをおすと、ログアウトする魔法のボタン</p>
         </button>
       </li>
     </ul>

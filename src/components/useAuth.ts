@@ -1,11 +1,7 @@
 /* eslint-disable no-console */
 
 import { addDoc, collection, getDocs, query, where } from "@firebase/firestore";
-import {
-  GoogleAuthProvider,
-  onAuthStateChanged,
-  signInWithPopup,
-} from "firebase/auth";
+import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth";
 import { ref } from "vue";
 
 import type { User, UserCredential } from "firebase/auth";
@@ -21,6 +17,7 @@ export function useAuth() {
 
   // ユーザーの変更を監視
   onAuthStateChanged($auth, (newUser) => {
+    console.log(`認証状態の変更を感知マン!: ${JSON.stringify(newUser)}`);
     currentUser.value = newUser;
   });
 
@@ -52,12 +49,22 @@ export function useAuth() {
     });
   }
 
+  // ログアウト
+
+  async function userSignOut(): Promise<void> {
+    console.log("ログアウト中...");
+    await signOut($auth);
+    console.log("ログアウトしました");
+    currentUser.value = null;
+  }
+
   /**
    * Google アカウントでログイン
    */
   async function googleSignUp(): Promise<void> {
     const provider = new GoogleAuthProvider();
     let userCredential: UserCredential;
+    console.trace("loginしました");
 
     try {
       userCredential = await signInWithPopup($auth, provider);
@@ -83,6 +90,7 @@ export function useAuth() {
     hasAuthorized,
     getUserFromUuid,
     createUser,
+    userSignOut,
     googleSignUp,
   };
 }
