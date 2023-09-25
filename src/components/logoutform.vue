@@ -7,7 +7,7 @@ const { currentUser, hasAuthorized, userSignOut } = useAuth();
 <template>
   <div class="signup-form">
     <li>
-      <p @click="userSignOut">これをおすと、ログアウトする魔法のボタン</p>
+      <button @click="userSignOut">ろぐあうとだ！！！！！！！！</button>
     </li>
   </div>
   <div>
@@ -18,3 +18,11 @@ const { currentUser, hasAuthorized, userSignOut } = useAuth();
     認証済み:{{ hasAuthorized ? "はい" : "いいえ" }}
   </div>
 </template>
+
+<style>
+.logo-vote {
+  width: 400px;
+  margin-left: 3%;
+  margin-top: 10px;
+}
+</style>

@@ -1,27 +1,36 @@
 <script setup lang="ts">
 import { useAuth } from "./useAuth";
 
-const { googleSignUp, currentUser, hasAuthorized, userSignOut } = useAuth();
+const { googleSignUp } = useAuth();
 </script>
 
 <template>
+  <div class="logo-vote">
+    <img src="../assets/img/logo.svg" />
+  </div>
+
   <div class="signup-form">
     <p class="title">SNSアカウントで登録</p>
     <ul class="signup-buttons">
       <li>
-        <button @click="googleSignUp">
+        <p>おまえろぐいんしてないぞ。下のロゴを押して、ろぐいんするのだ!!</p>
+        <button class="googleLogo" @click="googleSignUp">
           <img src="@/assets/img/google-logo.svg" />
           <span>Googleで登録</span>
-          <p @click="userSignOut">これをおすと、ログアウトする魔法のボタン</p>
         </button>
       </li>
     </ul>
   </div>
-  <div>
-    今のユーザー:{{ currentUser?.displayName }}
-    <br />
-    UID:{{ currentUser?.displayName }}
-    <br />
-    認証済み:{{ hasAuthorized ? "はい" : "いいえ" }}
-  </div>
+  <div></div>
 </template>
+
+<style>
+.logo-vote {
+  width: 400px;
+  margin-left: 3%;
+  margin-top: 10px;
+}
+.googleLogo {
+  width: 80%;
+}
+</style>

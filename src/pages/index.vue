@@ -45,7 +45,6 @@ const { hasAuthorized } = useAuth();
   </div>
 
   <div v-else>
-    <P>ろぐいんしろ</P>
     <SignUpForm />
   </div>
 </template>
