@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { useStudentData } from "../hooks/useStudentData";
 
+const { addTest } = useStudentData();
 const clicked = ref(true);
 
 // ボタンを押すイベントハンドラ
-const handleClick = () => {
+const understandClick = async () => {
   clicked.value = !clicked.value;
+  await addTest();
 };
 </script>
 
@@ -15,11 +18,11 @@ const handleClick = () => {
       <img src="../assets/img/logo.svg" />
     </div>
 
-    <VBtn class="homebtn" height="80" width="160" @click="$router.push('/')">
+    <VBtn class="homeBtn" height="80" width="160" @click="$router.push('/')">
       HOME
     </VBtn>
 
-    <div class="wakaranaibtn" @click="handleClick">
+    <div class="understandBtn" @click="understandClick">
       <img
         v-if="clicked"
         src="../assets/img/ositaato.svg"
@@ -31,14 +34,14 @@ const handleClick = () => {
         style="display: block; margin: auto"
       />
     </div>
-    <div class="rikaibtn">
+    <div class="understandText">
       {{ clicked ? "理解しています" : "理解していません" }}
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
-.homebtn {
+.homeBtn {
   background-size: cover;
   font-size: 35px;
   margin-left: 3%;
@@ -56,7 +59,7 @@ const handleClick = () => {
   height: 30%;
 }
 
-.wakaranaibtn {
+.understandBtn {
   /* わからないボタンのスタイル */
 
   margin: 0 auto;
@@ -65,7 +68,7 @@ const handleClick = () => {
   text-align: center;
 }
 
-.rikaibtn {
+.understandText {
   /* 理解ボタンのスタイル */
   color: #5f5f5f;
   text-align: center;
