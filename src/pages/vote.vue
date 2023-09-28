@@ -7,12 +7,9 @@ const { addTest } = useStudentData();
 const clicked = ref(true);
 // ボタンを押すイベントハンドラ
 const understandClick = async () => {
-  let understandState:boolean =false
   clicked.value = !clicked.value;
   await addTest();
-  understandState = !understandState;
 };
-
 </script>
 <template>
   <div>
