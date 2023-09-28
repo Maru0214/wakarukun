@@ -1,23 +1,24 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { useStudentData } from "../hooks/useStudentData";
+import { useStudentData } from "~/hooks/useStudentData";
 
 const { addTest } = useStudentData();
-const clicked = ref(true);
 
+const clicked = ref(true);
 // ボタンを押すイベントハンドラ
 const understandClick = async () => {
+  let understandState:boolean =false
   clicked.value = !clicked.value;
   await addTest();
+  understandState = !understandState;
 };
-</script>
 
+</script>
 <template>
   <div>
     <div class="logo-vote">
       <img src="../assets/img/logo.svg" />
     </div>
-
     <VBtn class="homeBtn" height="80" width="160" @click="$router.push('/')">
       HOME
     </VBtn>
@@ -34,9 +35,7 @@ const understandClick = async () => {
         style="display: block; margin: auto"
       />
     </div>
-    <div class="understandText">
-      {{ clicked ? "理解しています" : "理解していません" }}
-    </div>
+    <div class="understandText"></div>
   </div>
 </template>
 
