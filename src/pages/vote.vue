@@ -4,10 +4,11 @@ import { useStudentData } from "~/hooks/useStudentData";
 
 const { addTest } = useStudentData();
 
-const clicked = ref(true);
+const understandState = ref(true);
 // ボタンを押すイベントハンドラ
 const understandClick = async () => {
-  clicked.value = !clicked.value;
+  console.log(understandState.value); // true
+  understandState.value = !understandState.value;
   await addTest();
 };
 </script>
@@ -22,7 +23,7 @@ const understandClick = async () => {
 
     <div class="understandBtn" @click="understandClick">
       <img
-        v-if="clicked"
+        v-if="understandState"
         src="../assets/img/ositaato.svg"
         style="display: block; margin: auto"
       />
