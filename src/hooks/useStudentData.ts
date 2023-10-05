@@ -28,7 +28,7 @@ export function useStudentData() {
 
   const unsubscribe = onSnapshot(docRef, (newDoc) => {
     const newStudentData = newDoc.data();
-    if (newStudentData.value == null) {
+    if (newStudentData == null) {
       throw new Error("studentDataがnullだよ");
     }
   });
