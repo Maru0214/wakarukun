@@ -1,7 +1,12 @@
 /* eslint-disable no-console */
 
 import { addDoc, collection, getDocs, query, where } from "@firebase/firestore";
-import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  signInWithPopup,
+  signOut,
+} from "firebase/auth";
 import { ref } from "vue";
 
 import type { User, UserCredential } from "firebase/auth";

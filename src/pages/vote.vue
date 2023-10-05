@@ -2,14 +2,12 @@
 import { ref } from "vue";
 import { useStudentData } from "~/hooks/useStudentData";
 
-const { addTest } = useStudentData();
+const { student } = useStudentData();
 
 const understandState = ref(true);
 // ボタンを押すイベントハンドラ
 const understandClick = async () => {
-  console.log(understandState.value); // true
-  understandState.value = !understandState.value;
-  await addTest();
+  student.value.isWakaru = false;
 };
 </script>
 <template>

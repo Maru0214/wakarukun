@@ -7,7 +7,9 @@ const { currentUser, hasAuthorized, userSignOut } = useAuth();
 <template>
   <div class="signup-form">
     <li>
-      <button @click="userSignOut">ろぐあうとだ！！！！！！！！</button>
+      <button class="logoutBtn" @click="userSignOut">
+        <img src="../assets/img/logoutBtn.svg" />
+      </button>
     </li>
   </div>
   <div>
@@ -24,5 +26,10 @@ const { currentUser, hasAuthorized, userSignOut } = useAuth();
   width: 400px;
   margin-left: 3%;
   margin-top: 10px;
+}
+
+.logoutBtn {
+  width: 50%;
+  text-align: center;
 }
 </style>
