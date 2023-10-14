@@ -7,7 +7,7 @@ const { student } = useStudentData();
 const understandState = ref(true);
 // ボタンを押すイベントハンドラ
 const understandClick = async () => {
-  student.value.isWakaru = false;
+  understandState.value = !understandState.value;
 };
 </script>
 <template>
