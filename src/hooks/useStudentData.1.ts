@@ -1,7 +1,10 @@
 import { doc, onSnapshot, setDoc } from "firebase/firestore";
 import { converter } from "~/helpers/converter";
 import { useAuth } from "../components/useAuth";
-import { type studentData } from "./useStudentData";
+
+type studentData = {
+  isWakaru: boolean;
+};
 
 export function useStudentData() {
   const { $db } = useNuxtApp();
