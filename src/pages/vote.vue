@@ -1,8 +1,5 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { useStudentData } from "~/hooks/useStudentData";
-
-const { student } = useStudentData();
 
 const understandState = ref(true);
 // ボタンを押すイベントハンドラ
