@@ -30,6 +30,7 @@ const understandClick = () => {
         style="display: block; margin: auto"
       />
     </div>
+    <p></p>
     <div class="understandText"></div>
   </div>
 </template>
