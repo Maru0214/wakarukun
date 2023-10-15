@@ -19,7 +19,8 @@ export function useStudentData() {
   });
 
   const docRef = doc($db, "student", currentUser.value.uid).withConverter(
-    converter<studentData>()  );
+    converter<studentData>()
+  );
 
   watch(student, async (newStudentData) => {
     await setDoc(docRef, newStudentData);
