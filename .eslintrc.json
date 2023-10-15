@@ -36,6 +36,7 @@
     "@typescript-eslint/strict-boolean-expressions": "off",
     "import/extensions": "off",
     "import/no-unresolved": "off",
-    "import/no-mutable-exports": "off"
+    "import/no-mutable-exports": "off",
+    "vue/multi-word-component-names": "off"
   }
 }

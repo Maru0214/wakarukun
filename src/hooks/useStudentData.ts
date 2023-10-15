@@ -22,15 +22,25 @@ export function useStudentData() {
     converter<studentData>()
   );
 
-  watch(student, async (newStudentData) => {
-    await setDoc(docRef, newStudentData);
-  });
+  watch(
+    student,
+    async (newStudentData) => {
+      console.log(
+        `student の変更を感知マン: ${JSON.stringify(newStudentData)}`
+      );
+      await setDoc(docRef, newStudentData);
+    },
+    {
+      deep: true,
+    }
+  );
 
   const unsubscribe = onSnapshot(docRef, (newDoc) => {
     const newStudentData = newDoc.data();
     if (newStudentData == null) {
-      throw new Error("studentDataがnullだよ");
+      throw new Error("studentDataがnullがです!!!");
     }
+    student.value = newStudentData;
   });
 
   return {

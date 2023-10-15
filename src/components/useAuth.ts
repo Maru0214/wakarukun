@@ -22,7 +22,6 @@ export function useAuth() {
 
   // ユーザーの変更を監視
   onAuthStateChanged($auth, (newUser) => {
-    console.log(`認証状態の変更を感知マン!: ${JSON.stringify(newUser)}`);
     currentUser.value = newUser;
   });
 

@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { useStudentData } from "~/hooks/useStudentData";
 
-const understandState = ref(true);
-// ボタンを押すイベントハンドラ
-const understandClick = async () => {
-  understandState.value = !understandState.value;
+const { student } = useStudentData();
+
+// ボタンを押すイベント
+const understandClick = () => {
+  student.value.isWakaru = !student.value.isWakaru;
+  
 };
 </script>
 <template>
@@ -18,9 +20,9 @@ const understandClick = async () => {
 
     <div class="understandBtn" @click="understandClick">
       <img
-        v-if="understandState"
+        v-if="student.isWakaru"
         src="../assets/img/ositaato.svg"
-        style="display: block; margin: auto"
+        style="displvscode-file://vscode-app/c:/Users/syunn/AppData/Local/Programs/Microsoft%20VS%20Code/resources/app/out/vs/code/electron-sandbox/workbench/workbench.htmlay: block; margin: auto"
       />
       <img
         v-else
