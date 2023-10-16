@@ -1,4 +1,4 @@
-import { doc, onSnapshot, setDoc } from "firebase/firestore";
+import { collection, doc, onSnapshot, setDoc,query, getDocs, where} from "firebase/firestore";
 import { converter } from "~/helpers/converter";
 import { useAuth } from "../components/useAuth";
 
@@ -43,8 +43,23 @@ export function useStudentData() {
     student.value = newStudentData;
   });
 
+  async function getStudentDataListwith({
+    isWakaru,
+  }:studentData):Promise<studentData[]>{
+
+    const studentsRef = collection($db,"student").withConverter(converter<studentData>());
+
+    const queryIsWakaru = query(studentsRef,where("isWakaru","==",isWakaru)); 
+    const QuerySnapshot = await getDocs(queryIsWakaru)
+
+    return QuerySnapshot.docs.map((_doc) =>_doc.data());
+
+
+
+  }
+
   return {
     student,
     unsubscribe,
-  };
+    getStudentDataListwith  };
 }
