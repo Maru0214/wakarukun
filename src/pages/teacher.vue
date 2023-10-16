@@ -1,4 +1,7 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  // const { $db } = useNuxtApp();
+
+</script>
 
 <template>
   <div class="logo-vote">
