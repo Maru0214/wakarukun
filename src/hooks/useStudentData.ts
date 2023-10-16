@@ -1,4 +1,12 @@
-import { collection, doc, onSnapshot, setDoc,query, getDocs, where} from "firebase/firestore";
+import {
+  collection,
+  doc,
+  onSnapshot,
+  setDoc,
+  query,
+  getDocs,
+  where,
+} from "firebase/firestore";
 import { converter } from "~/helpers/converter";
 import { useAuth } from "../components/useAuth";
 
@@ -19,20 +27,20 @@ export function useStudentData() {
   });
 
   const docRef = doc($db, "student", currentUser.value.uid).withConverter(
-    converter<studentData>()
+    converter<studentData>(),
   );
 
   watch(
     student,
     async (newStudentData) => {
       console.log(
-        `student の変更を感知マン: ${JSON.stringify(newStudentData)}`
+        `student の変更を感知マン: ${JSON.stringify(newStudentData)}`,
       );
       await setDoc(docRef, newStudentData);
     },
     {
       deep: true,
-    }
+    },
   );
 
   const unsubscribe = onSnapshot(docRef, (newDoc) => {
@@ -45,21 +53,20 @@ export function useStudentData() {
 
   async function getStudentDataListwith({
     isWakaru,
-  }:studentData):Promise<studentData[]>{
+  }: studentData): Promise<studentData[]> {
+    const studentsRef = collection($db, "student").withConverter(
+      converter<studentData>(),
+    );
 
-    const studentsRef = collection($db,"student").withConverter(converter<studentData>());
+    const queryIsWakaru = query(studentsRef, where("isWakaru", "==", isWakaru));
+    const QuerySnapshot = await getDocs(queryIsWakaru);
 
-    const queryIsWakaru = query(studentsRef,where("isWakaru","==",isWakaru)); 
-    const QuerySnapshot = await getDocs(queryIsWakaru)
-
-    return QuerySnapshot.docs.map((_doc) =>_doc.data());
-
-
-
+    return QuerySnapshot.docs.map((_doc) => _doc.data());
   }
 
   return {
     student,
     unsubscribe,
-    getStudentDataListwith  };
+    getStudentDataListwith,
+  };
 }

@@ -4,13 +4,12 @@ import { useStudentData } from "~/hooks/useStudentData";
 const { getStudentDataListwith } = useStudentData();
 
 const studentIsWakaruCount = ref<{
-  wakaru:number;
-  wakaranai:number;
+  wakaru: number;
+  wakaranai: number;
 }>({
-  wakaru:0,
-  wakaranai:0
-})
-
+  wakaru: 0,
+  wakaranai: 0,
+});
 
 onMounted(async () => {
   const studentDataListWithWakaru = await getStudentDataListwith({
@@ -22,14 +21,14 @@ onMounted(async () => {
     isWakaru: true,
   });
   console.log(
-    `分からない生徒一覧:${JSON.stringify(studentDataListWithWakaranai)}`
+    `分からない生徒一覧:${JSON.stringify(studentDataListWithWakaranai)}`,
   );
 
   console.log(`わかっている人は、${studentDataListWithWakaru.length}人`);
   console.log(`わからない人は、${studentDataListWithWakaranai.length}人`);
 
   studentIsWakaruCount.value.wakaru = studentDataListWithWakaru.length;
-  studentIsWakaruCount.value.wakaranai=studentDataListWithWakaranai.length;
+  studentIsWakaruCount.value.wakaranai = studentDataListWithWakaranai.length;
 });
 </script>
 
@@ -38,9 +37,14 @@ onMounted(async () => {
     <img src="../assets/img/logo.svg" @click="$router.push('/')" />
   </div>
   <div>
-
-   わからないボタンを押している生徒の人数:{{studentIsWakaruCount.wakaranai }}人
-   <br/>
-   わからないボタンを押している割合:{{ (studentIsWakaruCount.wakaranai/ studentIsWakaruCount.wakaranai+studentIsWakaruCount.wakaru)*100}}%
+    わからないボタンを押している生徒の人数:{{
+      studentIsWakaruCount.wakaranai
+    }}人
+    <br />
+    わからないボタンを押している割合:{{
+      (studentIsWakaruCount.wakaranai / studentIsWakaruCount.wakaranai +
+        studentIsWakaruCount.wakaru) *
+      100
+    }}%
   </div>
 </template>

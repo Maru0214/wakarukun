@@ -32,7 +32,7 @@ export function useAuth() {
    */
   async function getUserFromUuid(uuid: string): Promise<User | null> {
     const users = await getDocs(
-      query(collection($db, "users"), where("uid", "==", uuid))
+      query(collection($db, "users"), where("uid", "==", uuid)),
     );
 
     return users.empty ? null : (users.docs[0].data() as User);

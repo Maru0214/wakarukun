@@ -2,8 +2,6 @@
 
 <template>
   <div>
-    
-
     <VBtn @click="$router.push('/')"> HOME </VBtn>
   </div>
 </template>
