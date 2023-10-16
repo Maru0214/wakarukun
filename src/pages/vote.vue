@@ -6,14 +6,10 @@ const { student } = useStudentData();
 // ボタンを押すイベント
 const understandClick = () => {
   student.value.isWakaru = !student.value.isWakaru;
-  
 };
 </script>
 <template>
   <div>
-    <div class="logo-vote">
-      <img src="../assets/img/logo.svg" />
-    </div>
     <VBtn class="homeBtn" height="80" width="160" @click="$router.push('/')">
       HOME
     </VBtn>
@@ -22,7 +18,7 @@ const understandClick = () => {
       <img
         v-if="student.isWakaru"
         src="../assets/img/ositaato.svg"
-        style="displvscode-file://vscode-app/c:/Users/syunn/AppData/Local/Programs/Microsoft%20VS%20Code/resources/app/out/vs/code/electron-sandbox/workbench/workbench.htmlay: block; margin: auto"
+        style="display: block; margin: auto"
       />
       <img
         v-else
