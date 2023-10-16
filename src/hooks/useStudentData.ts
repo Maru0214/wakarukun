@@ -1,10 +1,10 @@
 import {
   collection,
   doc,
-  onSnapshot,
-  setDoc,
-  query,
   getDocs,
+  onSnapshot,
+  query,
+  setDoc,
   where,
 } from "firebase/firestore";
 import { converter } from "~/helpers/converter";
@@ -18,29 +18,29 @@ export function useStudentData() {
   const { $db } = useNuxtApp();
   const { currentUser } = useAuth();
   // えらーだす
-  if (currentUser.value == null) {
-    throw new Error("currentUser がnullです");
-  }
+  // if (currentUser.value == null) {
+  // throw new Error("currentUser がnullです");
+  // }
 
   const student = ref<studentData>({
     isWakaru: false,
   });
 
   const docRef = doc($db, "student", currentUser.value.uid).withConverter(
-    converter<studentData>(),
+    converter<studentData>()
   );
 
   watch(
     student,
     async (newStudentData) => {
       console.log(
-        `student の変更を感知マン: ${JSON.stringify(newStudentData)}`,
+        `student の変更を感知マン: ${JSON.stringify(newStudentData)}`
       );
       await setDoc(docRef, newStudentData);
     },
     {
       deep: true,
-    },
+    }
   );
 
   const unsubscribe = onSnapshot(docRef, (newDoc) => {
@@ -55,7 +55,7 @@ export function useStudentData() {
     isWakaru,
   }: studentData): Promise<studentData[]> {
     const studentsRef = collection($db, "student").withConverter(
-      converter<studentData>(),
+      converter<studentData>()
     );
 
     const queryIsWakaru = query(studentsRef, where("isWakaru", "==", isWakaru));
