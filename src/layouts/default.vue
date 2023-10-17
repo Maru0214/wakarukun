@@ -1,4 +1,10 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useAuth } from "~/components/useAuth";
+
+const { hasAuthorized } = useAuth();
+
+console.log(hasAuthorized);
+</script>
 
 <template>
   <VApp>

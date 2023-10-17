@@ -21,7 +21,7 @@ onMounted(async () => {
     isWakaru: true,
   });
   console.log(
-    `分からない生徒一覧:${JSON.stringify(studentDataListWithWakaranai)}`,
+    `分からない生徒一覧:${JSON.stringify(studentDataListWithWakaranai)}`
   );
 
   console.log(`わかっている人は、${studentDataListWithWakaru.length}人`);
