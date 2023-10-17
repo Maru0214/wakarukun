@@ -18,9 +18,17 @@ export function useStudentData() {
   const { $db } = useNuxtApp();
   const { currentUser } = useAuth();
 
+  
+  const router = useRouter();
+
+  const jumpToLogin = async (): Promise<never> => {
+    await router.push("/login");
+    throw new Error("ログインしてね");
+  };
   // えらーだす
   if (currentUser.value == null) {
-    throw new Error("currentUser は null です");
+    // eslint-disable-next-line @typescript-eslint/no-throw-literal
+    throw jumpToLogin();
   }
 
   const student = ref<studentData>({

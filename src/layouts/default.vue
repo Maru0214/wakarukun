@@ -1,9 +1,19 @@
 <script setup lang="ts">
 import { useAuth } from "~/components/useAuth";
 
-const { hasAuthorized } = useAuth();
+const router = useRouter();
 
-console.log(hasAuthorized);
+const { currentUser } = useAuth();
+
+const jumpToLogin = async (): Promise<never> => {
+  await router.push("./");
+  throw new Error("ろぐいんしてね");
+};
+
+if (currentUser == null) {
+  // eslint-disable-next-line @typescript-eslint/no-use-before-define, @typescript-eslint/no-throw-literal
+  throw jumpToLogin();
+}
 </script>
 
 <template>
