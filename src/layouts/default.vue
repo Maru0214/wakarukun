@@ -6,7 +6,7 @@ const router = useRouter();
 const { currentUser } = useAuth();
 
 const jumpToLogin = async (): Promise<never> => {
-  await router.push("./");
+  await router.push("./signUpFrom");
   throw new Error("ろぐいんしてね");
 };
 

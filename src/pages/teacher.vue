@@ -42,8 +42,8 @@ onMounted(async () => {
     }}人
     <br />
     わからないボタンを押している割合:{{
-      (studentIsWakaruCount.wakaranai / studentIsWakaruCount.wakaranai +
-        studentIsWakaruCount.wakaru) *
+      (studentIsWakaruCount.wakaranai /
+        (studentIsWakaruCount.wakaranai + studentIsWakaruCount.wakaru)) *
       100
     }}%
   </div>
