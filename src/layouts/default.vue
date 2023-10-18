@@ -1,9 +1,14 @@
 <script setup lang="ts">
 import { useAuth } from "~/components/useAuth";
 
+const router = useRouter();
+
 const { hasAuthorized } = useAuth();
 
-console.log(hasAuthorized);
+console.log("default!");
+if (!hasAuthorized) {
+  await router.push("/");
+}
 </script>
 
 <template>

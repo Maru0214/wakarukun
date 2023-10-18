@@ -20,7 +20,7 @@ export function useStudentData() {
 
   // えらーだす
   if (currentUser.value == null) {
-    throw new Error("currentUser は null です");
+    throw new Error("currentUser is null");
   }
 
   const student = ref<studentData>({
