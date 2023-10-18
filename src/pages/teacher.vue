@@ -34,17 +34,20 @@ onMounted(async () => {
 
 <template>
   <div class="logo-vote">
+    <!--画像を表示 -->
     <img src="../assets/img/logo.svg" @click="$router.push('/')" />
   </div>
   <div>
+    <!--{{青文字は数字が入る変数。}}-->
     わからないボタンを押している生徒の人数:{{
       studentIsWakaruCount.wakaranai
     }}人
     <br />
     わからないボタンを押している割合:{{
-      (studentIsWakaruCount.wakaranai / studentIsWakaruCount.wakaranai +
-        studentIsWakaruCount.wakaru) *
+      (studentIsWakaruCount.wakaranai /
+        (studentIsWakaruCount.wakaranai + studentIsWakaruCount.wakaru)) *
       100
     }}%
   </div>
 </template>
+<style></style>

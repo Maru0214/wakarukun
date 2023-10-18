@@ -6,7 +6,7 @@ const { hasAuthorized } = useAuth();
 </script>
 
 <template>
-  <div v-if="hasAuthorized">
+  <div>
     <article>
       <div class="logo">
         <img src="../assets/img/logo.svg" />
@@ -14,6 +14,7 @@ const { hasAuthorized } = useAuth();
 
       <div class="bota">
         <VBtn
+          v-if="hasAuthorized"
           class="vote"
           height="80"
           width="160"
@@ -21,6 +22,16 @@ const { hasAuthorized } = useAuth();
         >
           生徒
         </VBtn>
+        <VBtn
+          v-else
+          class="vote"
+          height="80"
+          width="160"
+          @click="$router.push('/signUpForm')"
+        >
+          生徒
+        </VBtn>
+
         <VBtn
           class="teacher"
           height="80"
@@ -42,10 +53,6 @@ const { hasAuthorized } = useAuth();
 
       <Logoutform />
     </article>
-  </div>
-
-  <div v-else>
-    <SignUpForm />
   </div>
 </template>
 

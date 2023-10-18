@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useAuth } from "./useAuth";
+import { useAuth } from '~/components/useAuth';
 
 const { googleSignUp } = useAuth();
 </script>

@@ -11,6 +11,8 @@ import { ref } from "vue";
 
 import type { User, UserCredential } from "firebase/auth";
 
+const router = useRouter();
+
 export function useAuth() {
   const { $auth, $db } = useNuxtApp();
 
@@ -32,7 +34,7 @@ export function useAuth() {
    */
   async function getUserFromUuid(uuid: string): Promise<User | null> {
     const users = await getDocs(
-      query(collection($db, "users"), where("uid", "==", uuid)),
+      query(collection($db, "users"), where("uid", "==", uuid))
     );
 
     return users.empty ? null : (users.docs[0].data() as User);
@@ -76,6 +78,7 @@ export function useAuth() {
       console.error(error);
       throw new Error("Google アカウントでのログインに失敗しました");
     }
+    await router.push({ path: "./vote" });
 
     const user = await getUserFromUuid(userCredential.user.uid);
 
