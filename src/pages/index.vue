@@ -40,6 +40,9 @@ const { hasAuthorized } = useAuth();
 
       -->
     </article>
+    <div>
+      <img src="../assets/img/logoutBtn.svg" />
+    </div>
   </div>
 </template>
 
