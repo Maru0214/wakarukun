@@ -3,16 +3,11 @@ import { useAuth } from "~/components/useAuth";
 
 const router = useRouter();
 
-const { currentUser } = useAuth();
+const { hasAuthorized } = useAuth();
 
-const jumpToLogin = async (): Promise<never> => {
-  await router.push("./signUpFrom");
-  throw new Error("ろぐいんしてね");
-};
-
-if (currentUser == null) {
-  // eslint-disable-next-line @typescript-eslint/no-use-before-define, @typescript-eslint/no-throw-literal
-  throw jumpToLogin();
+console.log("default!");
+if (!hasAuthorized) {
+  await router.push("/");
 }
 </script>
 
