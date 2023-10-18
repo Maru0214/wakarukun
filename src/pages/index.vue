@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { useAuth } from "@/components/useAuth";
-import Logoutform from "~/components/logoutform.vue";
+import { useAuth } from "~/hooks/useAuth";
 
 const { hasAuthorized } = useAuth();
 </script>
@@ -50,8 +49,6 @@ const { hasAuthorized } = useAuth();
       
 
       -->
-
-      <Logoutform />
     </article>
   </div>
 </template>

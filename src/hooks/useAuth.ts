@@ -11,10 +11,9 @@ import { ref } from "vue";
 
 import type { User, UserCredential } from "firebase/auth";
 
-const router = useRouter();
-
 export function useAuth() {
   const { $auth, $db } = useNuxtApp();
+  const router = useRouter();
 
   // 現在のユーザー
   const currentUser = ref<User | null>($auth.currentUser);

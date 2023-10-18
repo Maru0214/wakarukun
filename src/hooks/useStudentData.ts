@@ -8,7 +8,7 @@ import {
   where,
 } from "firebase/firestore";
 import { converter } from "~/helpers/converter";
-import { useAuth } from "../components/useAuth";
+import { useAuth } from "./useAuth";
 
 type studentData = {
   isWakaru: boolean;

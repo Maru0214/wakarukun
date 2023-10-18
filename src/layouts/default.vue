@@ -1,15 +1,4 @@
-<script setup lang="ts">
-import { useAuth } from "~/components/useAuth";
-
-const router = useRouter();
-
-const { hasAuthorized } = useAuth();
-
-console.log("default!");
-if (!hasAuthorized) {
-  await router.push("/");
-}
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <VApp>
