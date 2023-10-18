@@ -2,6 +2,12 @@
 import { useAuth } from "~/hooks/useAuth";
 
 const { googleSignUp } = useAuth();
+const router = useRouter();
+
+const onClick = async () => {
+  await googleSignUp();
+  await router.push("/vote");
+};
 </script>
 
 <template>
@@ -14,7 +20,7 @@ const { googleSignUp } = useAuth();
     <ul class="signup-buttons">
       <li>
         <p>おまえろぐいんしてないぞ。下のロゴを押して、ろぐいんするのだ!!</p>
-        <button class="googleLogo" @click="googleSignUp">
+        <button class="googleLogo" @click="onClick">
           <img src="@/assets/img/google-logo.svg" />
           <span>Googleで登録</span>
         </button>

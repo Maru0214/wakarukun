@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useStudentData } from "~/hooks/useStudentData";
+import { useStudentsData } from "~/hooks/useStudentsData";
 
-const { getStudentDataListwith } = useStudentData();
+const { getIdListWith } = useStudentsData();
 
-const studentIsWakaruCount = ref<{
+const idListCount = ref<{
   wakaru: number;
   wakaranai: number;
 }>({
@@ -12,23 +12,21 @@ const studentIsWakaruCount = ref<{
 });
 
 onMounted(async () => {
-  const studentDataListWithWakaru = await getStudentDataListwith({
+  const idListWithWakaru = await getIdListWith({
     isWakaru: false,
   });
-  console.log(`わかる生徒一覧:${JSON.stringify(studentDataListWithWakaru)}`);
+  console.log(`わかる生徒一覧:${JSON.stringify(idListWithWakaru)}`);
 
-  const studentDataListWithWakaranai = await getStudentDataListwith({
+  const listWithWakaranai = await getIdListWith({
     isWakaru: true,
   });
-  console.log(
-    `分からない生徒一覧:${JSON.stringify(studentDataListWithWakaranai)}`
-  );
+  console.log(`分からない生徒一覧:${JSON.stringify(listWithWakaranai)}`);
 
-  console.log(`わかっている人は、${studentDataListWithWakaru.length}人`);
-  console.log(`わからない人は、${studentDataListWithWakaranai.length}人`);
+  console.log(`わかっている人は、${idListWithWakaru.length}人`);
+  console.log(`わからない人は、${listWithWakaranai.length}人`);
 
-  studentIsWakaruCount.value.wakaru = studentDataListWithWakaru.length;
-  studentIsWakaruCount.value.wakaranai = studentDataListWithWakaranai.length;
+  idListCount.value.wakaru = idListWithWakaru.length;
+  idListCount.value.wakaranai = listWithWakaranai.length;
 });
 </script>
 
@@ -39,15 +37,13 @@ onMounted(async () => {
   </div>
   <div>
     <!--{{青文字は数字が入る変数。}}-->
-    わからないボタンを押している生徒の人数:{{
-      studentIsWakaruCount.wakaranai
-    }}人
+    わからないボタンを押している生徒の人数:{{ idListCount.wakaranai }}人
     <br />
     わからないボタンを押している割合:{{
-      (studentIsWakaruCount.wakaranai /
-        (studentIsWakaruCount.wakaranai + studentIsWakaruCount.wakaru)) *
+      (idListCount.wakaranai / (idListCount.wakaranai + idListCount.wakaru)) *
       100
     }}%
   </div>
 </template>
 <style></style>
+~/hooks/useMyData ~/hooks/useStudentsData

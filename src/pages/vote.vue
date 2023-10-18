@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { useStudentData } from "~/hooks/useStudentData";
 
+definePageMeta({
+  middleware: "auth",
+});
+
 const { student } = useStudentData();
 
 // ボタンを押すイベント
@@ -66,3 +70,4 @@ const understandClick = () => {
   font-size: 20px;
 }
 </style>
+~/hooks/useMyData

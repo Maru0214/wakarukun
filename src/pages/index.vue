@@ -10,23 +10,13 @@ const { hasAuthorized } = useAuth();
       <div class="logo">
         <img src="../assets/img/logo.svg" />
       </div>
-
+      <p>{{ hasAuthorized ? "ログイン済み" : "未ログイン" }}</p>
       <div class="bota">
         <VBtn
-          v-if="hasAuthorized"
           class="vote"
           height="80"
           width="160"
           @click="$router.push('/vote')"
-        >
-          生徒
-        </VBtn>
-        <VBtn
-          v-else
-          class="vote"
-          height="80"
-          width="160"
-          @click="$router.push('/signUpForm')"
         >
           生徒
         </VBtn>

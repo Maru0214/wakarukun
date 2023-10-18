@@ -13,7 +13,6 @@ import type { User, UserCredential } from "firebase/auth";
 
 export function useAuth() {
   const { $auth, $db } = useNuxtApp();
-  const router = useRouter();
 
   // 現在のユーザー
   const currentUser = ref<User | null>($auth.currentUser);
@@ -77,7 +76,6 @@ export function useAuth() {
       console.error(error);
       throw new Error("Google アカウントでのログインに失敗しました");
     }
-    await router.push({ path: "./vote" });
 
     const user = await getUserFromUuid(userCredential.user.uid);
 
