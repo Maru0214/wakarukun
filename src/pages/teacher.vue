@@ -31,19 +31,46 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="logo-vote">
-    <!--画像を表示 -->
-    <img src="../assets/img/logo.svg" @click="$router.push('/')" />
+  <div class="example">
+   <img src="../assets/img/thaikei.svg">
+   <p>
+    {{ idListCount.wakaranai }}
+  </p>	
   </div>
+
   <div>
     <!--{{青文字は数字が入る変数。}}-->
-    わからないボタンを押している生徒の人数:{{ idListCount.wakaranai }}人
+    
     <br />
-    わからないボタンを押している割合:{{
+    割合:{{
       (idListCount.wakaranai / (idListCount.wakaranai + idListCount.wakaru)) *
       100
     }}%
   </div>
 </template>
-<style></style>
-~/hooks/useMyData ~/hooks/useStudentsData
+
+<style>
+.example {/*親div*/
+  position: relative;
+  text-align: center
+  }
+
+  .example p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  margin:0;
+  padding:0;
+  font-size: 10vh;
+  color: aliceblue;
+  /*文字の装飾は省略*/
+  }
+
+.example img {
+  width: 50%;
+  height:50%;
+  }
+  </style>
