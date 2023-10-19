@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useAuth } from "~/hooks/useAuth";
 
-const { hasAuthorized } = useAuth();
+const { hasAuthorized, userSignOut, googleSignUp } = useAuth();
 </script>
 
 <template>
@@ -10,14 +10,18 @@ const { hasAuthorized } = useAuth();
       <div class="logo">
         <img src="../assets/img/logo.svg" />
       </div>
-      <p>{{ hasAuthorized ? "ログイン済み" : "未ログイン" }}</p>
       <div class="bota">
         <VBtn
+          v-if="hasAuthorized"
           class="vote"
           height="80"
           width="160"
           @click="$router.push('/vote')"
         >
+          生徒
+        </VBtn>
+
+        <VBtn v-else class="vote" height="80" width="160" @click="googleSignUp">
           生徒
         </VBtn>
 
@@ -40,13 +44,19 @@ const { hasAuthorized } = useAuth();
 
       -->
     </article>
-    <div>
+    <div v-if="hasAuthorized" @click="userSignOut">
       <img src="../assets/img/logoutBtn.svg" />
+      <p>{{ hasAuthorized ? "ログイン済み" : "未ログイン" }}</p>
     </div>
+
+    <div v-else class="notLoginDesu">未ログインです。ログインが必要です。</div>
   </div>
 </template>
 
 <style scoped lang="scss">
+.notlogindesunot {
+  padding-top: 50%;
+}
 .logo {
   width: 80%;
   margin: 0 auto;
