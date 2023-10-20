@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_レイヤー_1" data-name="レイヤー 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 345.53 345.53">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 38.13px;
+      }
+
+      .cls-1, .cls-2 {
+        fill: #5e5e5f;
+        font-family: VDL-LogoJrBlack-Black-83pv-RKSJ-H, VDL-LogoJrBlack;
+        font-weight: 800;
+      }
+
+      .cls-2 {
+        font-size: 45.45px;
+      }
+
+      .cls-3 {
+        fill: none;
+        stroke: #a1b2bf;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 7px;
+      }
+    </style>
+  </defs>
+  <text class="cls-1" transform="translate(39.29 75.27)"><tspan x="0" y="0">わからない生徒</tspan></text>
+  <text class="cls-2" transform="translate(271.33 269.6)"><tspan x="0" y="0">人</tspan></text>
+  <polyline class="cls-3" points="9.42 309.57 147.62 309.57 172.77 335.87 199.61 307.8 336.1 307.8"/>
+</svg>
