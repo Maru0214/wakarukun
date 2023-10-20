@@ -32,20 +32,17 @@ onMounted(async () => {
 
 <template>
   <div class="example">
-   <img src="../assets/img/thaikei.svg">
+   <img src="../assets/img/haikei.svg">
    <p>
     {{ idListCount.wakaranai }}
   </p>	
   </div>
 
-  <div>
+  <div class="pasento">
     <!--{{青文字は数字が入る変数。}}-->
-    
     <br />
-    割合:{{
-      (idListCount.wakaranai / (idListCount.wakaranai + idListCount.wakaru)) *
-      100
-    }}%
+   {{(idListCount.wakaranai / (idListCount.wakaranai + idListCount.wakaru)) *
+      100}}%
   </div>
 </template>
 
@@ -64,13 +61,23 @@ onMounted(async () => {
   transform: translate(-50%,-50%);
   margin:0;
   padding:0;
-  font-size: 10vh;
-  color: aliceblue;
+  font-size: 18vh;
+  color: #5F5F5F;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   /*文字の装飾は省略*/
   }
 
 .example img {
   width: 50%;
   height:50%;
+  }
+
+  .pasento{
+    position: relative;
+    left: 43%;
+    margin-top: -15%;
+    font-size: 10vh;
+  color: #5F5F5F;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   }
   </style>
