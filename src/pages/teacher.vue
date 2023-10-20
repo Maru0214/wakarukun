@@ -74,8 +74,8 @@ onMounted(async () => {
 
   .pasento{
     position: relative;
-    left: 43%;
-    margin-top: -15%;
+    left: 44%;
+    margin-top: -10%;
     font-size: 10vh;
   color: #5F5F5F;
   font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
