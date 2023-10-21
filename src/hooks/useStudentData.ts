@@ -1,12 +1,4 @@
-import {
-  collection,
-  doc,
-  getDocs,
-  onSnapshot,
-  query,
-  setDoc,
-  where,
-} from "firebase/firestore";
+import { doc, onSnapshot, setDoc } from "firebase/firestore";
 import { converter } from "~/helpers/converter";
 import { useAuth } from "./useAuth";
 
@@ -23,17 +15,21 @@ export function useStudentData() {
     throw new Error("currentUser is null");
   }
 
+  // とりあえずtrueを代入している
   const student = ref<studentData>({
     isWakaru: false,
   });
+
+  // ここ（currentUserのドキュメント）を使います。って行っているだけ。データの取得や更新は行っていないよ
 
   const docRef = doc($db, "student", currentUser.value.uid).withConverter(
     converter<studentData>()
   );
 
+  // studentが変わったら.感知マン起動→先程宣言したもの(docRef)にnewStudentDataを入れる。
   watch(
     student,
-    async (newStudentData) => {
+    async (newStudentData,oldStudent) => {
       console.log(
         `student の変更を感知マン: ${JSON.stringify(newStudentData)}`
       );
@@ -44,30 +40,23 @@ export function useStudentData() {
     }
   );
 
-  const unsubscribe = onSnapshot(docRef, (newDoc) => {
+
+// unsubscribeでonSnapshotが囲われている。
+// onSnapshotはdocRefが変わったらnewStudentDataにnewDocを入れる。
+// nullだったら、怒る
+
+
+const unsubscribe = onSnapshot(docRef, (newDoc) => {
     const newStudentData = newDoc.data();
     if (newStudentData == null) {
-      throw new Error("studentDataがnullがです!!!");
+     
+      throw new Error("studentDataがnullがです!!!"); 
     }
     student.value = newStudentData;
   });
 
-  async function getStudentDataListwith({
-    isWakaru,
-  }: studentData): Promise<studentData[]> {
-    const studentsRef = collection($db, "student").withConverter(
-      converter<studentData>()
-    );
-
-    const queryIsWakaru = query(studentsRef, where("isWakaru", "==", isWakaru));
-    const QuerySnapshot = await getDocs(queryIsWakaru);
-
-    return QuerySnapshot.docs.map((_doc) => _doc.data());
-  }
-
   return {
     student,
     unsubscribe,
-    getStudentDataListwith,
   };
 }
