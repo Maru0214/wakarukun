@@ -33,6 +33,7 @@ export function useStudentsData() {
   );
 
   onSnapshot(collectionRef, (newDocs) => {
+    console.log("onSnapshotうごいた!!!");
     const newStudentData = newDocs.docs.map((doc) => doc.data());
     StudentsData.value = newStudentData;
   });
