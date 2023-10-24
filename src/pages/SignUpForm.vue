@@ -23,6 +23,7 @@ const onClick = async () => {
         <button class="googleLogo" @click="onClick">
           <img src="@/assets/img/google-logo.svg" />
           <span>Googleで登録</span>
+          <p></p>
         </button>
       </li>
     </ul>
