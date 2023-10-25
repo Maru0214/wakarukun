@@ -12,7 +12,7 @@ type StudentData = {
 
 // 一旦いろいろ代入
 const studentsDocs = ref<Array<QueryDocumentSnapshot<StudentData>>>();
-const studentsData = studentsDocs.value?.map((doc) => doc.data());
+const studentsData = ref<StudentData[]>([]);
 
 export function useStudentsData() {
   const { $db } = useNuxtApp();
@@ -37,6 +37,8 @@ export function useStudentsData() {
   });
 
   return {
+    studentsData,
+    studentsDocs,
     getIdListWith,
   };
 }
