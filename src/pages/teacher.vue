@@ -84,9 +84,10 @@ onMounted(async () => {
 h2 {
     position: relative;
     padding: 0.8rem 0;
+    margin-top: 8%;
     margin-bottom: 0.2rem;
     border-bottom: 5px solid;
-    color: rgb(91, 90, 90);
+    color: #A1B9C7;
     font-weight: bold;
     font-size: 26px;
     text-align: center;
@@ -105,20 +106,20 @@ h2:after {
 h2:before {
     border: 16px solid;
     border-color: transparent;
-    border-top-color: black;
+    border-top-color: #A1B9C7;
     margin-left: -16px;
 }
 
 h2:after {
     border: 10px solid;
     border-color: transparent;
-    border-top-color: white;
+    border-top-color: #E9E0DB;
     margin-left: -10px;
 }
 
 .example p {
   position: absolute;
-  bottom: -13%;
+  bottom: -8%;
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
@@ -131,7 +132,7 @@ h2:after {
 }
 
 .pasento {
-    top: 40%;
+    top: 10%;
     margin-left: 43%;
     font-size: 10vw;
     color:#5F5F5F;
