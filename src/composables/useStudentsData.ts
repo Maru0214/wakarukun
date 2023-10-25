@@ -31,9 +31,11 @@ export function useStudentsData() {
     converter<StudentData>()
   );
 
-
   // collectionがかわったら x、studentDocsに
-  const unsubscribe = onSnapshot(collectionRef, (newDocs) => {});
+  const unsubscribe = onSnapshot(collectionRef, (newDocs) => {
+    console.log("onSnapshotうごいた!!!");
+    studentsDocs.value = newDocs.docs;
+  });
 
   return {
     studentsData,
