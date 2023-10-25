@@ -1,7 +1,7 @@
 import {
   collection,
   getDocs,
-  onSnapshot,
+  // onSnapshot,
   query,
   where,
 } from "firebase/firestore";
@@ -11,7 +11,7 @@ type studentData = {
   isWakaru: boolean;
 };
 
-const StudentsData = ref<studentData[]>([]);
+// const StudentsData = ref<studentData[]>([]);
 
 export function useStudentsData() {
   const { $db } = useNuxtApp();
@@ -27,7 +27,7 @@ export function useStudentsData() {
 
     return querySnapshot.docs.map((_doc) => _doc.id);
   }
-
+/*
   const collectionRef = collection($db, "student").withConverter(
     converter<studentData>()
   );
@@ -37,6 +37,7 @@ export function useStudentsData() {
     const newStudentData = newDocs.docs.map((doc) => doc.data());
     StudentsData.value = newStudentData;
   });
+*/
 
   return {
     getIdListWith,
