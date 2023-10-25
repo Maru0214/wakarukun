@@ -1,83 +1,81 @@
 <script setup lang="ts">
 import { useStudentsData } from "~/hooks/useStudentsData";
 
-const { studentsDocs } = useStudentsData();
+const { studentsData } = useStudentsData();
 
 </script>
 
 <template>
   <head>
-    <meta name="viewport" content="width=device-width"/>
+    <meta name="viewport" content="width=device-width" />
   </head>
   <p class="title">わからない生徒</p>
-  
-  <p>{{ JSON.stringify(studentsDocs) }}</p>
+  <p>{{ studentsData.length }}</p>
 </template>
 
 <style>
-
 /*共通スタイル*/
 .title {
   margin-top: 5%;
   text-align: center;
-  color: #5F5F5F;
+  color: #5f5f5f;
   font-family: vdl-logojrblack, sans-serif;
   font-style: normal;
-  font-size: 350%;  
+  font-size: 350%;
 }
 
 .seitosu {
   text-align: center;
-  color: #5F5F5F;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',sans-serif;
+  color: #5f5f5f;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-style: normal;
-  font-size:1300%;  
+  font-size: 1300%;
 }
 
 .hito {
   text-align: center;
-  color: #5F5F5F;
-  font-family:vdl-logojrblack, sans-serif;
+  color: #5f5f5f;
+  font-family: vdl-logojrblack, sans-serif;
   font-style: normal;
-  font-size:30%; 
+  font-size: 30%;
   margin-top: -22%;
   margin-left: 30%;
 }
 
 h2 {
-    position: relative;
-    padding: 0.8rem 0;
-    margin-top: 8%;
-    margin-bottom: 0.2rem;
-    border-bottom: 5px solid;
-    color: #A1B9C7;
-    font-weight: bold;
-    font-size: 26px;
-    text-align: center;
+  position: relative;
+  padding: 0.8rem 0;
+  margin-top: 8%;
+  margin-bottom: 0.2rem;
+  border-bottom: 5px solid;
+  color: #a1b9c7;
+  font-weight: bold;
+  font-size: 26px;
+  text-align: center;
 }
 
 h2:before,
 h2:after {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    content: "";
-    height: 0;
-    width: 0;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  content: "";
+  height: 0;
+  width: 0;
 }
 
 h2:before {
-    border: 16px solid;
-    border-color: transparent;
-    border-top-color: #A1B9C7;
-    margin-left: -16px;
+  border: 16px solid;
+  border-color: transparent;
+  border-top-color: #a1b9c7;
+  margin-left: -16px;
 }
 
 h2:after {
-    border: 10px solid;
-    border-color: transparent;
-    border-top-color: #E9E0DB;
-    margin-left: -10px;
+  border: 10px solid;
+  border-color: transparent;
+  border-top-color: #e9e0db;
+  margin-left: -10px;
 }
 
 .example p {
@@ -90,17 +88,17 @@ h2:after {
   margin: 0;
   padding: 0;
   font-size: 25vw;
-  color: #5F5F5F;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',sans-serif;
+  color: #5f5f5f;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
 
 .pasento {
-    top: 10%;
-    margin-left: 43%;
-    font-size: 10vw;
-    color:#5F5F5F;
-    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  }
+  top: 10%;
+  margin-left: 43%;
+  font-size: 10vw;
+  color: #5f5f5f;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
 
 /*
 .pasento {
@@ -112,4 +110,4 @@ h2:after {
   }
 }
 */
-  </style>
+</style>

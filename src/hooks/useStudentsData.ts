@@ -18,10 +18,11 @@ export function useStudentsData() {
   const { $db } = useNuxtApp();
 
   // データを取得する関数
-  async function getIdListWith(studentData: StudentData): Promise<string[]> {
-    const docs = studentsDocs.value?.filter(
-      (doc) => doc.data() === studentData
-    );
+  function getIdListWith(studentData: StudentData): string[] {
+    const docs = studentsDocs.value?.filter((doc) => {
+      const docData = doc.data();
+      return docData.isWakaru && docData === studentData;
+    });
     return docs?.map((doc) => doc.id) ?? [];
   }
 
@@ -30,12 +31,18 @@ export function useStudentsData() {
     converter<StudentData>()
   );
 
-  // collectionがかわったら、やる
+
+  
+
+  // collectionがかわったら x、studentDocsに
+
   onSnapshot(collectionRef, (newDocs) => {
     console.log("onSnapshotうごいた!!!");
-    studentsDocs.value = newDocs.docs.map((doc) => doc.data());
-  });
+    studentsDocs.value = newDocs.docs;
+    // isWakaruがtrueのデータのみを抽出
+    studentsData.value = newDocs.docs.map((doc) => doc.data());
 
+  });
   return {
     studentsData,
     studentsDocs,
