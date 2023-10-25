@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import { useStudentsData } from "~/hooks/useStudentsData";
+import { useStudentsData } from "~/composables/useStudentsData";
 
-const { studentsData, getIdListWithIsWakaru, unsubscribe } = useStudentsData();
-
-onBeforeUnmount(() => {unsubscribe()});
+const { studentsData, getIdListWithIsWakaru } = useStudentsData();
 </script>
 
 <template>

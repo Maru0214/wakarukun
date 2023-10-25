@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useStudentData } from "~/hooks/useStudentData";
+import { useStudentData } from "~/composables/useStudentData";
 
 definePageMeta({
   middleware: "auth",
@@ -73,4 +73,3 @@ onBeforeUnmount(() => {
   font-size: 20px;
 }
 </style>
-~/hooks/useMyData

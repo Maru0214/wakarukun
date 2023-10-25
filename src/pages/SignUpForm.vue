@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useAuth } from "~/hooks/useAuth";
+import { useAuth } from "~/composables/useAuth";
 
 const { googleSignUp } = useAuth();
 const router = useRouter();

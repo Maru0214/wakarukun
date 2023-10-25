@@ -1,5 +1,12 @@
 {
-  "cSpell.words": ["firestore", "iconsets", "nuxt", "vuetify", "Wakaru"],
+  "cSpell.words": [
+    "composables",
+    "firestore",
+    "iconsets",
+    "nuxt",
+    "vuetify",
+    "Wakaru"
+  ],
   "vue3snippets.enable-compile-vue-file-on-did-save-code": true,
   "nuxt.isNuxtApp": false,
   "editor.codeActionsOnSave": {

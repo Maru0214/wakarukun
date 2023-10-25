@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useAuth } from "~/hooks/useAuth";
+import { useAuth } from "~/composables/useAuth";
 
 const { currentUser, hasAuthorized, userSignOut } = useAuth();
 </script>
@@ -33,4 +33,3 @@ const { currentUser, hasAuthorized, userSignOut } = useAuth();
   text-align: center;
 }
 </style>
-../hooks/useAuth

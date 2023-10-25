@@ -1,4 +1,4 @@
-import { useAuth } from "~/hooks/useAuth";
+import { useAuth } from "~/composables/useAuth";
 
 export default defineNuxtRouteMiddleware(async (to, _) => {
   // この middleware が設定されている場合は要ログイン
