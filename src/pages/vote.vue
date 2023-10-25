@@ -5,12 +5,15 @@ definePageMeta({
   middleware: "auth",
 });
 
-const { student } = useStudentData();
+const { student, unsubscribe } = useStudentData();
 
 // ボタンを押すイベント
 const understandClick = () => {
   student.value.isWakaru = !student.value.isWakaru;
 };
+onBeforeUnmount(() => {
+  unsubscribe();
+});
 </script>
 <template>
   <div>

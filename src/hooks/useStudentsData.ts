@@ -4,26 +4,26 @@ import {
   type QueryDocumentSnapshot,
 } from "firebase/firestore";
 import { converter } from "~/helpers/converter";
-
-// まとめて型宣言
-type StudentData = {
-  isWakaru: boolean;
-};
-
-// 一旦いろいろ代入
-const studentsDocs = ref<Array<QueryDocumentSnapshot<StudentData>>>();
-const studentsData = ref<StudentData[]>([]);
+import { type StudentData } from "~/types/student";
 
 export function useStudentsData() {
   const { $db } = useNuxtApp();
 
+  // 一旦いろいろ代入
+  const studentsDocs = ref<Array<QueryDocumentSnapshot<StudentData>>>();
+  const studentsData = computed<StudentData[]>(
+    () => studentsDocs.value?.map((doc) => doc.data()) ?? []
+  );
+
   // データを取得する関数
-  function getIdListWith(studentData: StudentData): string[] {
-    const docs = studentsDocs.value?.filter((doc) => {
-      const docData = doc.data();
-      return docData.isWakaru && docData === studentData;
-    });
-    return docs?.map((doc) => doc.id) ?? [];
+  function getIdListWithIsWakaru(isWakaru: boolean): string[] {
+    // NOTE: onSnapshot で studentsData にデータが流れてくる前に呼び出されることがある
+    if (studentsDocs.value == null) return [];
+
+    const docs = studentsDocs.value.filter(
+      (doc) => doc.data().isWakaru === isWakaru
+    );
+    return docs.map((doc) => doc.id);
   }
 
   // collectionRefを宣言
@@ -31,21 +31,17 @@ export function useStudentsData() {
     converter<StudentData>()
   );
 
-
-  
-
   // collectionがかわったら x、studentDocsに
 
-  onSnapshot(collectionRef, (newDocs) => {
+  const unsubscribe = onSnapshot(collectionRef, (newDocs) => {
     console.log("onSnapshotうごいた!!!");
     studentsDocs.value = newDocs.docs;
-    // isWakaruがtrueのデータのみを抽出
-    studentsData.value = newDocs.docs.map((doc) => doc.data());
-
   });
+
   return {
     studentsData,
     studentsDocs,
-    getIdListWith,
+    unsubscribe,
+    getIdListWithIsWakaru,
   };
 }

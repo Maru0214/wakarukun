@@ -1,10 +1,7 @@
 import { doc, onSnapshot, setDoc } from "firebase/firestore";
 import { converter } from "~/helpers/converter";
+import { type StudentData } from "~/types/student";
 import { useAuth } from "./useAuth";
-
-type studentData = {
-  isWakaru: boolean;
-};
 
 export function useStudentData() {
   const { $db } = useNuxtApp();
@@ -16,20 +13,20 @@ export function useStudentData() {
   }
 
   // とりあえずtrueを代入している
-  const student = ref<studentData>({
+  const student = ref<StudentData>({
     isWakaru: false,
   });
 
   // ここ（currentUserのドキュメント）を使います。って行っているだけ。データの取得や更新は行っていないよ
 
   const docRef = doc($db, "student", currentUser.value.uid).withConverter(
-    converter<studentData>()
+    converter<StudentData>()
   );
 
   // studentが変わったら.感知マン起動→先程宣言したもの(docRef)にnewStudentDataを入れる。
   watch(
     student,
-    async (newStudentData,oldStudent) => {
+    async (newStudentData, oldStudent) => {
       console.log(
         `student の変更を感知マン: ${JSON.stringify(newStudentData)}`
       );
@@ -40,17 +37,14 @@ export function useStudentData() {
     }
   );
 
+  // unsubscribeでonSnapshotが囲われている。
+  // onSnapshotはdocRefが変わったらnewStudentDataにnewDocを入れる。
+  // nullだったら、怒る
 
-// unsubscribeでonSnapshotが囲われている。
-// onSnapshotはdocRefが変わったらnewStudentDataにnewDocを入れる。
-// nullだったら、怒る
-
-
-const unsubscribe = onSnapshot(docRef, (newDoc) => {
+  const unsubscribe = onSnapshot(docRef, (newDoc) => {
     const newStudentData = newDoc.data();
     if (newStudentData == null) {
-     
-      throw new Error("studentDataがnullがです!!!"); 
+      throw new Error("studentDataがnullがです!!!");
     }
     student.value = newStudentData;
   });

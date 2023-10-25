@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { useStudentsData } from "~/hooks/useStudentsData";
 
-const { studentsData } = useStudentsData();
+const { studentsData, getIdListWithIsWakaru, unsubscribe } = useStudentsData();
 
+onBeforeUnmount(() => {unsubscribe()});
 </script>
 
 <template>
@@ -11,6 +12,8 @@ const { studentsData } = useStudentsData();
   </head>
   <p class="title">わからない生徒</p>
   <p>{{ studentsData.length }}</p>
+  <p>分からない人のid</p>
+  <p>{{ getIdListWithIsWakaru(false).length }}人</p>
 </template>
 
 <style>
