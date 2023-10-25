@@ -42,7 +42,7 @@ onMounted(async () => {
     人
   </div>
   </p>	
-  <h2>　</h2>
+  <h2> </h2>
 
   <div class="pasento">
    {{(idListCount.wakaranai / (idListCount.wakaranai + idListCount.wakaru)) *
