@@ -7,9 +7,11 @@ onMounted(async () => {
   await updateStudentsData();
 });
 
+/*
 setInterval(() => {
   void updateStudentsData();
 }, 1500);
+*/
 </script>
 
 <template>
