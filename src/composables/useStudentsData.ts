@@ -32,15 +32,11 @@ export function useStudentsData() {
   );
 
   // collectionがかわったら x、studentDocsに
-  const unsubscribe = onSnapshot(collectionRef, (newDocs) => {
-    console.log("onSnapshotうごいた!!!");
-    studentsDocs.value = newDocs.docs;
-  });
+
 
   return {
     studentsData,
     studentsDocs,
-    unsubscribe,
     getIdListWithIsWakaru,
   };
 }
