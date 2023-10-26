@@ -31,8 +31,11 @@ export function useStudentsData() {
     converter<StudentData>()
   );
 
+  onSnapshot(collectionRef, (newDocs) => {
+    console.log("onSnapshotうごいた!!!");
+    studentsDocs.value = newDocs.docs;
+  });
   // collectionがかわったら x、studentDocsに
-
 
   return {
     studentsData,
