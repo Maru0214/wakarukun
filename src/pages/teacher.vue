@@ -10,7 +10,7 @@ onMounted(async () => {
 
 setInterval(() => {
   void updateStudentsData();
-}, 15000);
+}, 1500000);
 </script>
 
 <template>
