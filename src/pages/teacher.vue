@@ -7,7 +7,9 @@ const { studentsData, getIdListWithIsWakaru, updateStudentsData } =
 onMounted(async () => {
   await updateStudentsData();
 });
-
+setInterval(() => {
+  void updateStudentsData();
+}, 1000000);
 </script>
 
 <template>
