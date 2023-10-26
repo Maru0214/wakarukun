@@ -10,7 +10,7 @@ onMounted(async () => {
 
 setInterval(() => {
   void updateStudentsData();
-}, 1000000);
+}, 15000);
 </script>
 
 <template>
@@ -18,10 +18,8 @@ setInterval(() => {
     <meta name="viewport" content="width=device-width" />
   </head>
   <p class="title">わからない生徒</p>
-  <p>{{ studentsData.length }}</p>
-  <p>分からない人のid</p>
-  <button @click="updateStudentsData()">更新</button>
-  <p>{{ getIdListWithIsWakaru(false).length }}人</p>
+  <p class="seitosu">{{ getIdListWithIsWakaru(false).length }}</p>
+  <p class="hito">人</p>
 </template>
 
 <style>
