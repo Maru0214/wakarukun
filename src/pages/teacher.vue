@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { useStudentsData } from "~/composables/useStudentsData";
 
-const { getIdListWithIsWakaru, updateStudentsData } =
-  useStudentsData();
+const { getIdListWithIsWakaru, updateStudentsData } = useStudentsData();
 
 onMounted(async () => {
   await updateStudentsData();
@@ -10,7 +9,7 @@ onMounted(async () => {
 
 setInterval(() => {
   void updateStudentsData();
-}, 1500000);
+}, 1500);
 </script>
 
 <template>
@@ -18,6 +17,7 @@ setInterval(() => {
     <meta name="viewport" content="width=device-width" />
   </head>
   <p class="title">わからない生徒</p>
+  <div @click="updateStudentsData">更新ボタン</div>
   <p class="seitosu">{{ getIdListWithIsWakaru(false).length }}</p>
   <p class="hito">人</p>
 </template>
@@ -109,15 +109,11 @@ h2:after {
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
 
-/*
 .pasento {
-    margin-top: 20%;
-    text-align: center;
-    font-size: 10vw;
-    color:#5F5F5F;
-    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  }
+  margin-top: 20%;
+  text-align: center;
+  font-size: 10vw;
+  color: #5f5f5f;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
-*/
 </style>
-import { useStudentsData } from "~/composables/useStudentsData.1";

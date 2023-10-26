@@ -1,9 +1,4 @@
-import {
-  collection,
-  getDocs,
-  query,
-  type QueryDocumentSnapshot,
-} from "firebase/firestore";
+import { collection, type QueryDocumentSnapshot } from "firebase/firestore";
 import { converter } from "~/helpers/converter";
 import { type StudentData } from "~/types/student";
 
@@ -33,10 +28,13 @@ export function useStudentsData() {
   }
 
   async function updateStudentsData(): Promise<void> {
+    /*
     console.log("Firestore から最新のデータを取得");
     const queryIsWakaru = query(collectionRef);
     const querySnapshot = await getDocs(queryIsWakaru);
     studentsDocs.value = querySnapshot.docs;
+    */
+    console.log("これだ");
   }
 
   return {
