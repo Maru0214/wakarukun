@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useStudentsData } from "~/composables/useStudentsData";
 
-const { studentsData, getIdListWithIsWakaru, updateStudentsData } =
+const { getIdListWithIsWakaru, updateStudentsData } =
   useStudentsData();
 
 onMounted(async () => {
