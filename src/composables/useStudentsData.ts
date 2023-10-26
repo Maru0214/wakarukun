@@ -1,10 +1,11 @@
 import {
-  collection,
-  onSnapshot,
-  type QueryDocumentSnapshot,
+    QuerySnapshot,
+    collection, type CollectionReference,
+    type QueryDocumentSnapshot
 } from "firebase/firestore";
 import { converter } from "~/helpers/converter";
 import { type StudentData } from "~/types/student";
+
 
 export function useStudentsData() {
   const { $db } = useNuxtApp();
@@ -31,12 +32,22 @@ export function useStudentsData() {
     converter<StudentData>()
   );
 
-  onSnapshot(collectionRef, (newDocs) => {
-    console.log("onSnapshotうごいた!!!");
-    studentsDocs.value = newDocs.docs;
-  });
-  // collectionがかわったら x、studentDocsに
 
+  async function updateStudentsData(): Promise<void> {
+    studentsDocs.value =// なんとか
+  }
+
+  const studentColRef = collection(
+    collectionRef,
+    "isWakaru"
+  ) as CollectionReference<StudentData>;
+
+  const studentNewDoc: StudentData[] = [];
+  QuerySnapshot.forEach(doc => {
+    ret.push(doc.data() as StudentData);
+  });
+
+  const ;
   return {
     studentsData,
     studentsDocs,
