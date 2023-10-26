@@ -1,7 +1,13 @@
 <script setup lang="ts">
 import { useStudentsData } from "~/composables/useStudentsData";
 
-const { studentsData, getIdListWithIsWakaru } = useStudentsData();
+const { studentsData, getIdListWithIsWakaru, updateStudentsData } =
+  useStudentsData();
+
+onMounted(async () => {
+  await updateStudentsData();
+});
+
 </script>
 
 <template>
@@ -11,6 +17,7 @@ const { studentsData, getIdListWithIsWakaru } = useStudentsData();
   <p class="title">わからない生徒</p>
   <p>{{ studentsData.length }}</p>
   <p>分からない人のid</p>
+  <button @click="updateStudentsData()">更新</button>
   <p>{{ getIdListWithIsWakaru(false).length }}人</p>
 </template>
 

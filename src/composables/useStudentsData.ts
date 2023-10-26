@@ -1,11 +1,11 @@
 import {
-    QuerySnapshot,
-    collection, type CollectionReference,
-    type QueryDocumentSnapshot
+  collection,
+  getDocs,
+  query,
+  type QueryDocumentSnapshot,
 } from "firebase/firestore";
 import { converter } from "~/helpers/converter";
 import { type StudentData } from "~/types/student";
-
 
 export function useStudentsData() {
   const { $db } = useNuxtApp();
@@ -14,6 +14,11 @@ export function useStudentsData() {
   const studentsDocs = ref<Array<QueryDocumentSnapshot<StudentData>>>();
   const studentsData = computed<StudentData[]>(
     () => studentsDocs.value?.map((doc) => doc.data()) ?? []
+  );
+
+  // collectionRefを宣言
+  const collectionRef = collection($db, "student").withConverter(
+    converter<StudentData>()
   );
 
   // データを取得する関数
@@ -27,30 +32,17 @@ export function useStudentsData() {
     return docs.map((doc) => doc.id);
   }
 
-  // collectionRefを宣言
-  const collectionRef = collection($db, "student").withConverter(
-    converter<StudentData>()
-  );
-
-
   async function updateStudentsData(): Promise<void> {
-    studentsDocs.value =// なんとか
+    console.log("Firestore から最新のデータを取得");
+    const queryIsWakaru = query(collectionRef);
+    const querySnapshot = await getDocs(queryIsWakaru);
+    studentsDocs.value = querySnapshot.docs;
   }
 
-  const studentColRef = collection(
-    collectionRef,
-    "isWakaru"
-  ) as CollectionReference<StudentData>;
-
-  const studentNewDoc: StudentData[] = [];
-  QuerySnapshot.forEach(doc => {
-    ret.push(doc.data() as StudentData);
-  });
-
-  const ;
   return {
     studentsData,
     studentsDocs,
     getIdListWithIsWakaru,
+    updateStudentsData,
   };
 }
