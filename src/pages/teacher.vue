@@ -10,7 +10,7 @@ onMounted(async () => {
 /*
 setInterval(() => {
   void updateStudentsData();
-}, 1500);
+}, 15000);
 */
 </script>
 
@@ -19,13 +19,21 @@ setInterval(() => {
     <meta name="viewport" content="width=device-width" />
   </head>
   <p class="title">わからない生徒</p>
-  <div @click="updateStudentsData">更新ボタン</div>
   <p class="seitosu">{{ getIdListWithIsWakaru(false).length }}</p>
   <p class="hito">人</p>
+  <v-btn @click="updateStudentsData"> 更新 </v-btn>
 </template>
 
 <style>
 /*共通スタイル*/
+
+.updateButton {
+  height: "80";
+  width: "160";
+  align-self: start;
+
+  background-color: #5f5f5f;
+}
 .title {
   margin-top: 5%;
   text-align: center;
