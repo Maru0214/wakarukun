@@ -21,18 +21,15 @@ setInterval(() => {
   <p class="title">わからない生徒</p>
   <p class="seitosu">{{ getIdListWithIsWakaru(false).length }}</p>
   <p class="hito">人</p>
-  <v-btn @click="updateStudentsData"> 更新 </v-btn>
+  <v-btn class="updateButton" @click="updateStudentsData"> 更新 </v-btn>
 </template>
 
 <style>
 /*共通スタイル*/
 
 .updateButton {
-  height: "80";
-  width: "160";
-  align-self: start;
-
-  background-color: #5f5f5f;
+  right: 10px; /* 右に10px移動 */
+  top: 10px; /* 下に10px移動 */
 }
 .title {
   margin-top: 5%;
