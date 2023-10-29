@@ -1,7 +1,6 @@
 import {
   collection,
-  getDocs,
-  query,
+  onSnapshot,
   type QueryDocumentSnapshot,
 } from "firebase/firestore";
 import { converter } from "~/helpers/converter";
@@ -32,17 +31,23 @@ export function useStudentsData() {
     return docs.map((doc) => doc.id);
   }
 
+  /*
   async function updateStudentsData(): Promise<void> {
     console.log("Firestore から最新のデータを取得");
     const queryIsWakaru = query(collectionRef);
     const querySnapshot = await getDocs(queryIsWakaru);
     studentsDocs.value = querySnapshot.docs;
   }
+  */
+
+  onSnapshot(collectionRef, (newDocs) => {
+    console.log("onSnapshotうごいた!!!");
+    studentsDocs.value = newDocs.docs;
+  });
 
   return {
     studentsData,
     studentsDocs,
     getIdListWithIsWakaru,
-    updateStudentsData,
   };
 }

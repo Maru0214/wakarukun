@@ -1,17 +1,7 @@
 <script setup lang="ts">
 import { useStudentsData } from "~/composables/useStudentsData";
 
-const { getIdListWithIsWakaru, updateStudentsData } = useStudentsData();
-
-onMounted(async () => {
-  await updateStudentsData();
-});
-
-
-setInterval(() => {
-  void updateStudentsData();
-}, 15000);
-
+const { getIdListWithIsWakaru } = useStudentsData();
 </script>
 
 <template>
@@ -21,13 +11,17 @@ setInterval(() => {
   <p class="title">わからない生徒</p>
   <p class="seitosu">{{ getIdListWithIsWakaru(false).length }}</p>
   <p class="hito">人</p>
-  <v-btn class="updateButton" @click="updateStudentsData"> 更新 </v-btn>
+
+  <v-btn class="toHomeBtn" @click="$router.push('/')"> homeへ戻る </v-btn>
 </template>
 
 <style>
 /*共通スタイル*/
 
-.updateButton {
+.toHomeBtn {
+  margin-left: 5%;
+  height: 10%;
+  width: 20%;
   right: 10px; /* 右に10px移動 */
   top: 10px; /* 下に10px移動 */
 }
