@@ -1,7 +1,6 @@
 import { defineNuxtConfig } from "nuxt/config";
 import vuetify from "vite-plugin-vuetify";
 export default defineNuxtConfig({
-
   devtools: { enabled: true },
   build: {
     transpile: ["vuetify"],
@@ -35,6 +34,6 @@ export default defineNuxtConfig({
   rootDir: "./src",
 
   routeRules: {
-    "/**": { prerender: false },
+    "/teacher": { prerender: false },
   },
 });
