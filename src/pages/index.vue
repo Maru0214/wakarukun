@@ -2,6 +2,13 @@
 import { useAuth } from "~/composables/useAuth";
 
 const { hasAuthorized, userSignOut, googleSignUp } = useAuth();
+
+const router = useRouter();
+
+const voteSignUp = async () => {
+  await googleSignUp();
+  await router.push("/vote");
+};
 </script>
 
 <template>
@@ -21,7 +28,7 @@ const { hasAuthorized, userSignOut, googleSignUp } = useAuth();
           生徒
         </VBtn>
 
-        <VBtn v-else class="vote" height="80" width="160" @click="googleSignUp">
+        <VBtn v-else class="vote" height="80" width="160" @click="voteSignUp">
           生徒
         </VBtn>
 
