@@ -36,7 +36,7 @@ const voteSignUp = async () => {
           class="teacher"
           height="80"
           width="160"
-          @click="$router.push('/teacher')"
+          @click="$router.push('/passInput')"
         >
           先生
         </VBtn>
