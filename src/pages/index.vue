@@ -61,13 +61,9 @@ const voteSignUp = async () => {
 </template>
 
 <style scoped lang="scss">
-.notlogindesunot {
-  padding-top: 50%;
-}
 .logo {
   width: 80%;
   margin: 0 auto;
-  margin-top: 25%;
 }
 
 .bota {
