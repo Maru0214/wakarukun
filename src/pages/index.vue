@@ -12,37 +12,36 @@ const voteSignUp = async () => {
 </script>
 
 <template>
-  <div>
-    <article>
-      <div class="logo">
-        <img src="../assets/img/logo.svg" />
-      </div>
-      <div class="bota">
-        <VBtn
-          v-if="hasAuthorized"
-          class="vote"
-          height="80"
-          width="160"
-          @click="$router.push('/vote')"
-        >
-          生徒
-        </VBtn>
+  <article>
+    <div class="logo">
+      <img src="../assets/img/logo.svg" />
+    </div>
+    <div class="bota">
+      <VBtn
+        v-if="hasAuthorized"
+        class="vote"
+        height="80"
+        width="160"
+        @click="$router.push('/vote')"
+      >
+        生徒
+      </VBtn>
 
-        <VBtn v-else class="vote" height="80" width="160" @click="voteSignUp">
-          生徒
-        </VBtn>
+      <VBtn v-else class="vote" height="80" width="160" @click="voteSignUp">
+        生徒
+      </VBtn>
 
-        <VBtn
-          class="teacher"
-          height="80"
-          width="160"
-          @click="$router.push('/passInput')"
-        >
-          先生
-        </VBtn>
-      </div>
+      <VBtn
+        class="teacher"
+        height="80"
+        width="160"
+        @click="$router.push('/passInput')"
+      >
+        先生
+      </VBtn>
+    </div>
 
-      <!-- もしくは
+    <!-- もしくは
 
       <NuxtLink to="/vote">
         <VBtn> 投票画面移動するよ </VBtn>
@@ -50,8 +49,9 @@ const voteSignUp = async () => {
       
 
       -->
-    </article>
-    <div v-if="hasAuthorized" @click="userSignOut">
+  </article>
+  <div class="logoutBtnCenter">
+    <div v-if="hasAuthorized" class="logoutBtn" @click="userSignOut">
       <img src="../assets/img/logoutBtn.svg" />
       <p>{{ hasAuthorized ? "ログイン済み" : "未ログイン" }}</p>
     </div>
@@ -83,5 +83,13 @@ const voteSignUp = async () => {
   text-align: center;
   font-size: 45px;
   margin-left: 15px;
+}
+
+.logoutBtn {
+  width: 50%;
+  text-align: center;
+}
+.logoutBtnCenter {
+  text-align: center;
 }
 </style>
