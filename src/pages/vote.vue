@@ -24,12 +24,12 @@ onBeforeUnmount(() => {
     <div class="understandBtn" @click="understandClick">
       <img
         v-if="student.isWakaru"
-        src="../assets/img/ositaato.svg"
+        src="../assets/img/osumae.svg"
         style="display: block; margin: auto"
       />
       <img
         v-else
-        src="../assets/img/osumae.svg"
+        src="../assets/img/ositaato.svg"
         style="display: block; margin: auto"
       />
     </div>
