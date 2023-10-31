@@ -51,12 +51,12 @@ const voteSignUp = async () => {
       -->
   </article>
   <div class="logoutBtnCenter">
-    <div v-if="hasAuthorized" class="logoutBtn" @click="userSignOut">
-      <img src="../assets/img/logoutBtn.svg" />
-      <p>{{ hasAuthorized ? "ログイン済み" : "未ログイン" }}</p>
+    <div class="logoutBtn">
+      <div v-if="hasAuthorized" @click="userSignOut">
+        <img src="../assets/img/logoutBtn.svg" />
+        <p>{{ hasAuthorized ? "ログイン済み" : "未ログイン" }}</p>
+      </div>
     </div>
-
-    <div v-else class="notLoginDesu">未ログインです。ログインが必要です。</div>
   </div>
 </template>
 
@@ -85,11 +85,14 @@ const voteSignUp = async () => {
   margin-left: 15px;
 }
 
+.logoutBtnCenter {
+  text-align: center; /* 水平方向に中央揃え */
+}
+
 .logoutBtn {
   width: 50%;
-  text-align: center;
-}
-.logoutBtnCenter {
-  text-align: center;
+  margin: 0 auto; /* 水平方向に中央揃え */
+  display: flex;
+  flex-direction: column;
 }
 </style>
