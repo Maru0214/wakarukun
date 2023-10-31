@@ -1,10 +1,26 @@
 <script setup lang="ts">
-const password = ref("");
+import { LocalStorage } from "~/helpers/localstorage";
 
+const hasTeacherAuthorizedStorage = new LocalStorage("hasTeacherAuthorized");
+
+const password = ref("");
+const router = useRouter();
 const { passwordTeacher } = useRuntimeConfig().public;
 
-function checkPassword(): void {
-  console.log(password.value === passwordTeacher);
+onMounted(() => {
+  const hasTeacherAuthorized = hasTeacherAuthorizedStorage.get();
+  console.log(hasTeacherAuthorized ? "認証したことある" : "認証したことない");
+});
+
+async function checkPassword(): Promise<void> {
+  if (password.value === passwordTeacher) {
+    hasTeacherAuthorizedStorage.set(true);
+    console.log("認証済み！");
+
+    await router.push("/teacher");
+  } else {
+    console.log("認証失敗");
+  }
   password.value = "";
 }
 </script>
