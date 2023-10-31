@@ -28,6 +28,7 @@ export default defineNuxtConfig({
       messagingSenderId: "",
       appId: "",
       measurementId: "",
+      passwordTeacher: "",
     },
   },
 
