@@ -7,7 +7,7 @@ export default {
   },
   methods: {
     login() {
-      if (this.password === "wakarukun2023") {
+      if (this.password === "meiden2023") {
         // パスワードが正しい場合の処理
         // 例: ページの遷移など
         this.$router.push("/teacher"); // Vue Routerを使用して遷移
