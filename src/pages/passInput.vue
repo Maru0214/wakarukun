@@ -1,64 +1,40 @@
-<script setup lang="ts">
-import { LocalStorage } from "~/helpers/localstorage";
-
-const hasTeacherAuthorizedStorage = new LocalStorage("hasTeacherAuthorized");
-
-const password = ref("");
-const router = useRouter();
-const { passwordTeacher } = useRuntimeConfig().public;
-
-onMounted(() => {
-  const hasTeacherAuthorized = hasTeacherAuthorizedStorage.get();
-  console.log(hasTeacherAuthorized ? "認証したことある" : "認証したことない");
-});
-
-async function checkPassword(): Promise<void> {
-  if (password.value === passwordTeacher) {
-    hasTeacherAuthorizedStorage.set(true);
-    console.log("認証済み！");
-
-    await router.push("/teacher");
-  } else {
-    console.log("認証失敗");
-  }
-  password.value = "";
-}
+<script>
+export default {
+  data() {
+    return {
+      password: "",
+    };
+  },
+  methods: {
+    login() {
+      if (this.password === "meiden2023") {
+        // パスワードが正しい場合の処理
+        // 例: ページの遷移など
+        this.$router.push("/teacher"); // Vue Routerを使用して遷移
+      } else {
+        alert("パスワードが正しくありません");
+      }
+    },
+  },
+};
 </script>
-
 <template>
-  <main>
-    <v-form @submit.prevent="checkPassword">
-      <div class="form-container">
-        <v-text-field
-          v-model="password"
-          label="パスワード入れろ"
-          variant="outlined"
-          type="password"
-          clearable
-          focused
-        >
-        </v-text-field>
-        <v-btn :disabled="password.length === 0" color="success" type="submit">
-          Sign In
-        </v-btn>
-      </div>
-    </v-form>
-  </main>
+  <div class="passInputBody">
+    <div class="center">
+      <label for="password">パスワードを入力:</label>
+      <input type="password" id="password" v-model="password" />
+      <v-btn @click="login"> 決定</v-btn>
+    </div>
+  </div>
 </template>
-
-<style lang="scss">
-main {
-  height: 100%;
-  width: 100%;
-  display: grid;
-  display: grid;
-  place-content: center;
-  place-items: center;
-
-  .form-container {
-    display: flex;
-    width: 500px;
-    gap: 20px;
-  }
+<style>
+.passInputBody {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* 画面の高さいっぱいに表示 */
+}
+.center {
+  text-align: center;
 }
 </style>
