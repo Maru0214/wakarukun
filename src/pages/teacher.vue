@@ -1,9 +1,6 @@
 <script setup lang="ts">
 import { useStudentsData } from "~/composables/useStudentsData";
-import { useStudentData } from "~/composables/useStudentData";
 
-
-const { dataAllDelete } = useStudentData();
 const { getIdListWithIsWakaru } = useStudentsData();
 </script>
 
@@ -16,7 +13,6 @@ const { getIdListWithIsWakaru } = useStudentsData();
   <p class="hito">人</p>
 
   <v-btn class="toHomeBtn" @click="$router.push('/')"> homeへ戻る </v-btn>
-  <v-btn @click="dataAllDelete">全リセット</v-btn>
 </template>
 
 <style>
