@@ -19,6 +19,16 @@ export default {
 };
 </script>
 <template>
+  <VBtn
+    class="homeBtn"
+    height="40"
+    width="100"
+    @click="$router.push('/')"
+    :class="homeBtn"
+  >
+    HOME
+  </VBtn>
+
   <div class="passInputBody">
     <div class="center">
       <label for="password">パスワードを入力:</label>
@@ -36,5 +46,9 @@ export default {
 }
 .center {
   text-align: center;
+}
+
+.homeBtn {
+  margin: 3%;
 }
 </style>
