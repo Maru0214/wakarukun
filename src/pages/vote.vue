@@ -7,6 +7,10 @@ definePageMeta({
 
 const { student, unsubscribe } = useStudentData();
 
+onMounted(() => {
+  student.value.isWakaru = true;
+});
+
 // ボタンを押すイベント
 const understandClick = () => {
   student.value.isWakaru = !student.value.isWakaru;
