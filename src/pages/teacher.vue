@@ -10,8 +10,6 @@ const { getIdListWithIsWakaru } = useStudentsData();
   </head>
   <p class="title">わからない生徒</p>
   <p class="seitosu">{{ getIdListWithIsWakaru(false).length }}</p>
-  <p class="hito">人</p>
-
   <v-btn class="toHomeBtn" @click="$router.push('/')"> homeへ戻る </v-btn>
 </template>
 
