@@ -20,25 +20,27 @@ onBeforeUnmount(() => {
 });
 </script>
 <template>
-  <div>
-    <VBtn class="homeBtn" height="80" width="160" @click="$router.push('/')">
-      HOME
-    </VBtn>
+  <div class="voteAll">
+    <div>
+      <VBtn class="homeBtn" height="80" width="160" @click="$router.push('/')">
+        HOME
+      </VBtn>
 
-    <div class="understandBtn" @click="understandClick">
-      <img
-        v-if="student.isWakaru"
-        src="../assets/img/osumae.svg"
-        style="display: block; margin: auto"
-      />
-      <img
-        v-else
-        src="../assets/img/ositaato.svg"
-        style="display: block; margin: auto"
-      />
+      <div class="understandBtn" @click="understandClick">
+        <img
+          v-if="student.isWakaru"
+          src="../assets/img/osumae.svg"
+          style="display: block; margin: auto"
+        />
+        <img
+          v-else
+          src="../assets/img/ositaato.svg"
+          style="display: block; margin: auto"
+        />
+      </div>
+      <p></p>
+      <div class="understandText"></div>
     </div>
-    <p></p>
-    <div class="understandText"></div>
   </div>
 </template>
 
@@ -75,5 +77,8 @@ onBeforeUnmount(() => {
   color: #5f5f5f;
   text-align: center;
   font-size: 20px;
+}
+.voteAll {
+  padding-bottom: 20%;
 }
 </style>
