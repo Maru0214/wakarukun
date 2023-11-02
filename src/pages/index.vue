@@ -12,6 +12,7 @@ const voteSignUp = async () => {
 </script>
 
 <template>
+  <div @click="$router.push('./kanri')">ss</div>
   <article>
     <div class="logo">
       <img src="../assets/img/logo.svg" />
