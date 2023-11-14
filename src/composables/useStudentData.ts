@@ -36,11 +36,7 @@ export function useStudentData() {
       deep: true,
     }
   );
-
-  const dataAllDelite =()=>{
-    console.log("aaaa")
-  }
-
+  
   // unsubscribeでonSnapshotが囲われている。
   // onSnapshotはdocRefが変わったらnewStudentDataにnewDocを入れる。
   // nullだったら、怒る
