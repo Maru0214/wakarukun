@@ -38,6 +38,6 @@ const onClick = async () => {
   margin-top: 10px;
 }
 .googleLogo {
-  width: 80%;
+  width: 10%;
 }
 </style>
