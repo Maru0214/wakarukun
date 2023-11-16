@@ -12,6 +12,13 @@ const voteSignUp = async () => {
 </script>
 
 <template>
+  <div class="logoutBtnCenter">
+    <div class="logoutBtn">
+      <div v-if="hasAuthorized" @click="userSignOut">
+        <img src="../assets/img/logoutBtn.svg" />
+      </div>
+    </div>
+  </div>
   <article>
     <div class="logo">
       <img src="../assets/img/logo.svg" />
@@ -50,20 +57,14 @@ const voteSignUp = async () => {
 
       -->
   </article>
-  <div class="logoutBtnCenter">
-    <div class="logoutBtn">
-      <div v-if="hasAuthorized" @click="userSignOut">
-        <img src="../assets/img/logoutBtn.svg" />
-        <p>{{ hasAuthorized ? "ログイン済み" : "未ログイン" }}</p>
-      </div>
-    </div>
-  </div>
+  
 </template>
 
 <style scoped lang="scss">
 .logo {
   width: 80%;
   margin: 0 auto;
+  margin-top: -70px;
 }
 
 .bota {
@@ -90,8 +91,9 @@ const voteSignUp = async () => {
 }
 
 .logoutBtn {
-  width: 50%;
-  margin: 0 auto; /* 水平方向に中央揃え */
+  width: 30%;
+  margin-right: 60px;
+  margin-top: -30px;
   display: flex;
   flex-direction: column;
 }
